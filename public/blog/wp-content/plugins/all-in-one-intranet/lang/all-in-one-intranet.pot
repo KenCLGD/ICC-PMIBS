@@ -1,0 +1,161 @@
+# Copyright (C) 2017 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/AllInOneIntranet\n"
+"POT-Creation-Date: 2017-08-31 12:18:46+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: core/core_all_in_one_intranet.php:33
+msgid "You attempted to login to the site, but you do not have any permissions. If you believe you should have access, please contact your administrator."
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:130
+msgid "Settings"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:157 core/core_all_in_one_intranet.php:163
+msgid "All-In-One Intranet settings"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:158 core/core_all_in_one_intranet.php:164
+msgid "All-In-One Intranet"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:182
+msgid "All-In-One Intranet setup"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:197
+msgid "Save Changes"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:208
+msgid "Privacy"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:212
+msgid "Force site to be entirely private"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:220
+msgid "Require logged-in users to be members of a sub-site to view it"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:226
+msgid "Note that your media uploads (e.g. photos) will still be accessible to anyone who knows their direct URLs."
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:235
+msgid "Warning:"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:236
+msgid "Your site is set so that &quot;Anyone can register&quot; themselves. "
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:239
+msgid "Turn off here"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:251
+msgid "Login Redirect"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:254
+msgid "Redirect after login to URL: "
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:261
+msgid "Effective when users login via /wp-login.php directly. Otherwise, they will be taken to the page they were trying to access before being required to login."
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:273
+msgid "Auto logout inactive users after "
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:280
+msgid "(leave blank to turn off auto-logout)"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:289
+msgid "Minutes"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:290
+msgid "Hours"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:291
+msgid "Days"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:330
+msgid "Auto logout time should be blank or a whole number"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:335
+msgid "Unspecified error"
+msgstr ""
+
+#: core/core_all_in_one_intranet.php:375
+msgid "Settings saved"
+msgstr ""
+
+#: premium_all_in_one_intranet.php:67
+msgid "You attempted to access the \"%1$s\" sub-site, but you are not currently a member of this site. If you believe you should be able to access \"%1$s\", please contact your network administrator."
+msgstr ""
+
+#: premium_all_in_one_intranet.php:71
+msgid "You are a member of the following sites:"
+msgstr ""
+
+#: premium_all_in_one_intranet.php:165
+msgid "<b>Notice:</b> Your site is set so that \"Anyone can register\" themselves, provided they are members of one of the following domains:"
+msgstr ""
+
+#: premium_all_in_one_intranet.php:170
+msgid "<b>Severe Warning:</b> Your site is set so that &quot;Anyone can register&quot; themselves."
+msgstr ""
+
+#: premium_all_in_one_intranet.php:177
+msgid "Change settings here"
+msgstr ""
+
+#: premium_all_in_one_intranet.php:190
+msgid "Sub-site Membership"
+msgstr ""
+
+#: premium_all_in_one_intranet.php:193
+msgid "Users should default to the following role in all sub-sites"
+msgstr ""
+
+#: premium_all_in_one_intranet.php:197
+msgid "None"
+msgstr ""
+
+#: premium_all_in_one_intranet.php:201
+msgid "Changing the default role here will not affect existing sub-sites and users"
+msgstr ""
+
+# wordpress plugin description
+msgid "Instantly turn WordPress into a private corporate intranet"
+msgstr ""
+
+# wordpress plugin description
+msgid "Instantly turn your WordPress installation into a private corporate intranet"
+msgstr ""
+
+# wordpress plugin description
+msgid "All-In-One Intranet"
+msgstr ""
+
+# wordpress plugin description
+msgid "All-In-One Intranet Premium"
+msgstr ""

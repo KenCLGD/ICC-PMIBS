@@ -1359,7 +1359,7 @@ public function ProjectEdit(){
             ->join('req_items_tbl as ri','ri.ejr_no','=','ejr.ejr_no')->get();
         $empPic = DB::table('employee_tbl')->where('emp_id',$id)->get();
   
-   //notification
+   //notification for admin
 		$notif = DB::table('notification_tbl as notif')
 			->join('employee_tbl as emp','emp.emp_id','=','notif.notif_from')
 			->where('notif.notif_description', 'not like', '%added a project to you%')

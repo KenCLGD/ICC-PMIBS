@@ -9,7 +9,7 @@
             <div class="x_panel">
                 <div class="x_title" style="margin-bottom: 20px;">
                     <div class="title_left">
-                        <h4>Company <small>List</small></h4>
+                        <h4>Client <small> Query</small></h4>
                     </div>
 
                     <div class="clearfix"></div>
@@ -18,8 +18,37 @@
                     <p class="text-muted font-13 m-b-30">
                         It shows all company information including their address and contact information.
                     </p>
+					
+					<div class="col-md-8 col-sm-8 col-xs-24 form-group has-feedback">
+						<label>Company Name</label>
+		             	<input type="text" class="comName" name="comName" required="required" placeholder="Company Name" style="margin-top:-1%" minlength="2" pattern="[A-Za-z -]{2,}" title="Letters Only and atleast 2 characters">
+					 </div>
+					 
+					<div class="col-md-4 col-sm-4 col-xs-24 form-group has-feedback" style="margin-top:-.25rem" >
+						<label>Main Contact</label><br>
+		             	<input type="text" class="MCFname" name="MCFname" required="required" placeholder="First" style="margin-top:-1%; width:49%" minlength="2" pattern="[A-Za-z ]{2,}" title="Letters Only and atleast 2 characters">
+                        <input type="text" class="MCLname" name="MCLname" required="required" placeholder="Last" style="margin-top:-1%; width:49%" minlength="2" pattern="[A-Za-z ]{2,}" title="Letters Only and atleast 2 characters">
+                    </div>    
+					
+					<div class="col-md-8 col-sm-8 col-xs-24 form-group has-feedback" style="margin-top:-1%">
+						<label>Company Address</label>
+		             	<input type="text" class="comAddress" name="comAddress" required="required" placeholder="Address" style="margin-top:-1%" minlength="2" pattern="[A-Za-z -]{2,}" title="Letters Only and atleast 2 characters">
+					 </div>
+					 
+					 <div class="col-md-4 col-sm-4 col-xs-8 form-group " style="margin-top:-1%">
+			             <label style="margin-bottom:5%">Status</label>
+			             <select class="form-control comStatus" name="comStatus" required="" style="margin-top:-.5%">
+			              <option value="" disabled selected>Choose Status</option>
+			              <option value="Active">Active</option>
+			              <option value="Inactive">Inactive</option>
+			            </select>
+		          	</div>
+			
+					<div class="col-md-12 col-sm-12 col-xs-24 form-group " style="margin-top:1%">
+		              <button type="button" class="button searchclient" id="searchclient" style="width:100%" data-id="0"><i class="fa fa-search"></i> &nbsp Search</button>
+		            </div>
 
-                    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <table id="queryclienttable" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                         <thead style="background-color: #353959; color:#ffffff;">
                             <tr>
                                 <th>Action</th>
@@ -32,26 +61,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($var as $var)
                             <tr>
-                                <td>
-                                    <button class="btn  edittype" data-id="{{$var->cl_no}}"><i class="fa fa-pencil"></i> Edit </button>
-                                    <button class="btn-delete deletetype " data-id="{{$var->cl_no}}"><i class="fa fa-trash-o"></i> Delete </button>
-                                </td>
-                                <td>{{$var->cl_no}}</td>
-                                <td>{{$var->cl_company}}</td>
-								<td>
-									<a class="editcr" data-id="{{$var->cr_id}}" style="cursor:pointer">
-									{{$var->cr_first_name.' '.$var->cr_last_name}}
-                                    <br />
-                                    <small style="font-size: 11px;">{{$var->cr_position}}</small>
-									</a>
-								</td>
-                                <td>{{$var->cl_email}}</td>
-                                <td>{{$var->cl_contact}}</td>
-                                <td>{{$var->cl_address}}</td>
+                                <td> </td>
+                                <td></td>
+                                <td></td>
+								<td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            @endforeach
                         </tbody>
                     </table>
 
@@ -114,7 +132,7 @@
                         <input type="hidden" class="id" name="id">
                         <div class="input-field col s12">
                             <i class="large material-icons prefix" style="font-size: 37px">account_balance</i>
-                            <input type="text" class="comName" name="comName" required="required" placeholder="Company Name *" minlength="2">
+                            <input type="text" class="comName" name="comName" required="required" placeholder="Company Name *" minlength="2" pattern="[A-Za-z -]{2,}" title="Letters Only and atleast 2 characters">
                         </div>
                         <div class="input-field col s6">
                             <i class="material-icons prefix">email</i>
@@ -274,6 +292,37 @@
         $('#delete-form .id').val($(this).data('id'));
         $('#deleteModal').modal('show');
     });
+	
+	  $('.searchclient').click(function () {
+	   	$('#queryclienttable').html('');
+		$('#queryclienttable').html('<thead style="background-color: #353959; color:#ffffff;"><tr><th style="width:5%">ID</th><th style="width:20%">Company Name</th><th style="width:15%">Contact Person</th><th style="width:15%">Email</th><th style="width:10%">Contact #</th><th style="width:20%">Company Address</th></tr></thead>');
+   		$.ajax
+	    ({
+	      type : "get",
+	      url : '/searchclient',
+	      data : {
+		  		"name" : $('.comName').val(),
+		  		"fname" : $('.MCFname').val(),
+		  		"lname" : $('.MCLname').val(),
+		  		"address" : $('.comAddress').val(),
+		  		"status" : $('.comStatus').val(),
+				},
+	      dataType: "json",
+	      success: function(response) {
+		        response.forEach(function(data){
+						var name 	= data.cr_first_name + ' ' + data.cr_last_name;
+						var col1	 	= '<tr><td style="text-align:center">' + data.cl_no + '</td>';
+						var col2 		= '<td>' + data.cl_company + '</td>';
+						var col3 		= '<td>' + name + '<br /><small style="font-size: .8rem;">' + data.cr_position + '</small></td>';
+						var col4		=	'<td>'+ data.cl_contact+ '</td><td>' + data.cl_email +'</td><td>' + data.cl_address + '</td></tr>';
+							
+						var row = col1+ col2 + col3 + col4;
+					
+					$('#queryclienttable').append(row);   
+	        		})
+	      }
+	    });
+	  });
 
  $('#phone').keypress(function(eve) {
     if ((eve.which != 46 || $(this).val().indexOf('.') != -1) && (eve.which < 48 || eve.which > 57) || (eve.which == 46 && $(this).caret().start == 0) ) {

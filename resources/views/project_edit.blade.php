@@ -147,8 +147,7 @@ if it's not present, don't show loader *
 					             	<li>
 					               		 <a ><i class="fa fa-wrench" ></i>Maintenance<span class="fa fa-chevron-down"></span> </a>
 					               		 <ul class="nav child_menu">
-					                  		<li><a href="{{ url ('client') }}">Client</a></li>
-						                  	<li><a href="{{ url ('company') }}">Company</a></li>
+						                  	<li><a href="{{ url ('company') }}"> Client Company</a></li>
 						                  	<li><a href="{{ url ('engineer') }}">Employee</a></li>
 						                  	<li><a href="{{ url ('phase') }}">Phases</a></li>
 						                  	<li><a href="{{ url ('tasks') }}">Tasks</a></li>
@@ -195,6 +194,13 @@ if it's not present, don't show loader *
 							                <li><a href="{{ url ('equipment_util') }}">Equipment Utilization</a></li>
 							             </ul>
 							         </li>
+						            <li>
+						              <a ><i class="fa fa-question-circle-o jumbo"></i>Queries<span class="fa fa-chevron-down"></span></a>
+						              <ul class="nav child_menu">
+						                <li><a href="{{ url ('queryEmployee') }}">Employee</a></li>
+                							<li><a href="{{ url ('queryClient') }}">Client Company</a></li>
+						              </ul>
+						            </li>
 				          		</ul>
 				        		</div>
 				      </div>
@@ -553,14 +559,14 @@ if it's not present, don't show loader *
 							</div>
 							</div>
 								
-							<!--<div class="col-md-4 col-sm-4 col-xs-8">
+							<div class="col-md-4 col-sm-4 col-xs-8">
 								<div class="x_panel">
 									<div class="x_title">
 										<h2 style="font-size: 2em;">Task Status</h2>
 										<div class="clearfix"></div>
 									</div>
 									<div class="x_content well" style="padding:20px">
-										<!--<h2 class="StepTitle" style="text-align:left; margin-bottom: 25px;"><strong>Project Manager</strong></h2>
+										<h2 class="StepTitle" style="text-align:left; margin-bottom: 25px;"><strong>Project Manager</strong></h2>
 										<h4><strong>Name:</strong> {{$proj->emp_first_name}} {{$proj->emp_last_name}}</h4>
 										<h4><strong>Job Title:</strong> {{$proj->el_position}}</h4>
 										<h4><strong>Email:</strong> {{$proj->emp_email}}</h4>
@@ -591,14 +597,9 @@ if it's not present, don't show loader *
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-24 " style="width:100%;">
 												<a href="/monthlyreport?id={{$proj->proj_no}}"><button class="btn btn-success" style="margin-top: 13px; width:100%">Monthly Report</button></a>
-												@foreach($nvc as $nvc)
-												@if(date("m",strtotime($nvc->invoice_date))== date("m",strtotime("now")) || $proj->proj_percentage <= 15)
-												@break
-												@else
-												<button type="submit" data-id="{{$proj->proj_no}}" class="btn btn-success addinvoice" style="margin-top: 13px; width:100%">Sent an Invoice</button>
-												@break
-												@endif	
-												@endforeach
+												
+												<button type="submit" data-id="{{$proj->proj_no}}" class="btn btn-success addinvoice" style="margin-top: 13px; width:100%">Create an Invoice</button>
+									
 												@if ($proj->proj_status == 'Closed')
 												<a href="/openproject?id={{$proj->proj_no}}"><button class="btn btn-success" style="margin-top: 13px; width:100%">Open Project</button></a>
 												@else
@@ -609,7 +610,7 @@ if it's not present, don't show loader *
 										@endforeach
 									</div>
 								</div>
-							</div>-->
+							</div>
 							
 							<div class="col-md-4 col-sm-4 col-xs-8" style="float:right;">
 				<div class="x_panel ">
@@ -1343,8 +1344,12 @@ if it's not present, don't show loader *
 
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">					
 									<p class="text-muted well well-sm no-shadow" style="margin-top: 5px;">
-										It is suggested to request a payment at the end of the month.
+										It is suggested to request a pnnnnnnnayment at the end of the month.
 									</p>
+								</div>
+								
+								<div id="ale" class=" col-md-12 col-sm-12 col-xs-24" >
+									The task <strong id="tasknme"> </strong> was completed on <strong id="date_invoice"> </strong>
 								</div>
 
 							</div>
@@ -1488,6 +1493,7 @@ if it's not present, don't show loader *
 					$('#addInvoice #proj_no').val(data.proj_no);
 					$('#addInvoice #project-id').val(data.proj_no);
 					$('#addInvoice #project-name').val(data.pi_title);
+					
 				})
 			}
 		});

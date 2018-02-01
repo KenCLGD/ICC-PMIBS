@@ -17,15 +17,15 @@
             <div class="row form-group" style="height: 0px; margin-bottom: -10px;">
               <div class="col-xs-12" style="height: 0px; margin-bottom: -10px;">
                 <ul class="nav nav-pills nav-justified thumbnail setup-panel" style="height: 90px; margin-bottom: -50px;">
-                  <li class="disabled"><a href="#step-1">
+                  <li class="active"><a href="#step-1">
                     <h4 class="list-group-item-heading">Step 1</h4>
                     <p class="list-group-item-text">Client & Company Information</p>
                   </a></li>
-                  <li class="active"><a href="#step-2">
+                  <li class="disabled"><a href="#step-2">
                     <h4 class="list-group-item-heading">Step 2</h4>
                     <p class="list-group-item-text">Contract Information</p>
                   </a></li>
-                  <li class="disabled"><a href="#step-3">
+                  <li class="active"><a href="#step-3">
                     <h4 class="list-group-item-heading">Step 3</h4>
                     <p class="list-group-item-text">Project Information</p>
                   </a></li>
@@ -160,84 +160,39 @@
             <div class="col-xs-12">
               <div class="col-md-12 well text-center">
                 <h1 style="margin-bottom: 3%;"> CONTRACT INFORMATION </h1>
-				<div class="col-md-6 col-sm-6 col-xs-12 ">
-	                <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-	                  <input type="text" class="form-control has-feedback-left" id="contract-title" name="contract-title"required="required" placeholder="Contract Title *">
-	                  <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-	                </div>
-	                <!--div class="col-md-2 col-sm-2 col-xs-12 form-group has-feedback">
-	                  <label>Contract Type</label>
-	                </div>-->
-	                <div class="form-group col-md-12 col-sm-12 col-xs-12">
-						  <label>Contract Type</label>
-		                  <select class="form-control" id="contract-type" name="contract-type" required>
-		                    <option value="" disabled selected>Select Contract Type</option>
-		                    <option value="Horizontal">Horizontal</option>
-		                    <option value="Vertical">Vertical</option>
-		                  </select>
-	                </div>
-	                <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-	                  <label>Signed Date</label>
-	                </div>
-	                <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
-	                  <input type="date" class="form-control" id="contract-date" name="contract-date" required="required" style="line-height:5px;">
-	                </div>
-				</div>
-				
-				<div class="col-md-6 col-sm-6 col-xs-12 ">
-					<!-- start accordion -->
-                    <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                      <div class="panel" >
-                        <a style="background-color:white" class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          <h4 class="panel-title">Signatory</h4>
-                        </a>
-                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" >
-                          <div class="panel-body" style="background-color:white" >
-                            <table class="table projects" id="signatory_table">
-		                    <thead style="background-color: #353959; color:#ffffff; font-size: 12px; text-align: left;">
-		                      <tr>
-		                        <th style="width: 50%; background-color:#aeb3e8">Signatory Name</th>
-		                        <th style="width: 40%; background-color:#aeb3e8;">Position</th>
-		                        <th style="width: 10%; background-color:#aeb3e8">
-									<button  type="button" class="btn btn-success btn-xs" id= "addsignatory" style="font-size:15px;"><i class="fa fa-plus"></i></button>
-								</th>
-		                      </tr>
-		                    </thead>
-		                    <tbody style="background-color: #fff; font-size: 14px; text-align: left;">
-								<tr>
-									<td>
-										<input type="text" name="signname[]" value="Alexander Ang" style="border: white; width: 100%;"/> 
-									</td>
-									<td>
-										<input type="text" name="signposition[]" value="position" style="border: white; width: 100%;"/> 
-									</td>
-									<td> 
-										<a  class="btn btn-danger btn-xs" onclick="delete_signatory( this )">
-										<i class="fa fa-trash-o"></i> </a>
-									</td>
-								</tr>
-		                    </tbody>
-		                  </table>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end of accordion -->
-				</div>
-				
-				
-                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" style="display:none">
+
+                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                  <input type="text" class="form-control has-feedback-left" id="contract-title" name="contract-title"required="required" placeholder="Contract Title *" onchange="something(this.value)>
+                  <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                   <input type="text" class="form-control has-feedback-left" id="contract-signedby" name="contract-signedby" required="required" placeholder="Signed by *">
                   <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                 </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                  <label>Contract Type</label>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                  <label>Signed Date</label>
+                </div>
+                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                  <select class="form-control" id="contract-type" name="contract-type" required>
+                    <option value="" disabled selected>Select Contract Type</option>
+                    <option value="Horizontal">Horizontal</option>
+                    <option value="Vertical">Vertical</option>
+                  </select>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                  <input type="date" class="form-control" id="contract-date" name="contract-date" required="required">
+                </div>
                 <article style="margin-bottom: 5px">
                   <table class="meta">
-                    <tr style="display:none">
+                    <tr>
                       <th><span>Amount Due</span></th>
                       <td><span id="prefix">P</span><span>0.00</span></td>
                     </tr>
                   </table>
-                  <div class="col-md-6 col-sm-6 col-xs-12" style="margin-right:-4px;  margin-bottom:20px; width:100%; text-align:center" >
+                  <div class="col-md-6 col-sm-6 col-xs-12" style="margin-right:-4px; margin-top:-30px; margin-bottom:20px; width:100%; text-align:center" >
                     <a  data-toggle="modal" data-target="#addContractPlan"><button type="button" class="button" ><i class="fa fa-plus"></i> &nbsp Add Contract Plan</button></a>
                   </div>
                   <table class="bill" id="bill">
@@ -289,12 +244,13 @@
                 <div class="col-md-12 col-sm-12 col-xs-24".>
 
                   <div class="col-md-12 col-sm-12 col-xs-24 form-group has-feedback">
+                    <label style="float: left"> Project Name </label>
                     <input type="text" class="form-control has-feedback-left" id="project-name" name="project-name" placeholder="Project Name" required="required">
                     <span class="fa fa-building form-control-feedback left" aria-hidden="true"></span>
                   </div>
 
-                  <div class="form-group col-md-6 col-sm-6 col-xs-12">
-                    <label style="float: left"> Project Manager </label>
+                  <div class="form-group col-md-6 col-sm-6 col-xs-12" style="margin-top:1%">
+                    <label style="float: left"> Project Manager <small style="font-size: 1.05rem"> (only shows available PMs)</small></label>
                     <select class="form-control" required id="project-manager" name="project-manager">
                       <option value="" disabled selected>Select Project Manager</option>
                       @foreach($promanager as $promanager)
@@ -303,7 +259,7 @@
                     </select>
                   </div>
 
-                  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                  <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" style="margin-top:1%">
                     <label style="float: left"> Construction Site </label>
                     <input type="text" class="form-control has-feedback-left" name="construction-site" id="construction-site" placeholder="Construction Site" required="required" style="background-color: #fff">
                     <span class="fa fa-building form-control-feedback left" aria-hidden="true"></span>
@@ -417,6 +373,7 @@
 <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.js"></script>
+<script src="../build/js/select2.js"></script>
 <!-- Dropzone.js -->
 <script src="../vendors/dropzone/dist/min/dropzone.min.js"></script>
 <script src="../vendors/upload.js"></script>
@@ -986,6 +943,17 @@ input[type="color"]:focus,
     inptotal = inpcost * inpquantity;
     total = inptotal.toFixed(2);
     document.getElementById("task-price").value = total;
+
+  });
+
+//change project title name
+	$( "#contract-title" ).keyup(function() {
+
+		var total = 0;
+
+    conname = document.getElementById("contract-title").value;
+
+    document.getElementById("project-name").value = conname;
 
   });
 

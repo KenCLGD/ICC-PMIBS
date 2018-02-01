@@ -38,19 +38,14 @@ Route::get('/updatenotifadmin', 'AdminController@updatenotif');
 
 Route::get('/notification', 'AdminController@notification');
 
-/* CLIENT */
-Route::get('/client', 'AdminController@Client');
-
-Route::get('/getClient', 'AdminController@getClient');
-
-Route::post('/editclient', 'AdminController@editclient');
-
-Route::post('/deleteclient', 'AdminController@deleteclient');
-
 /* COMPANY */
 Route::get('/company', 'AdminController@Company');
 
 Route::get('/getCompany', 'AdminController@getCompany');
+
+Route::get('/getClient', 'AdminController@getClient'); //contact oerson
+
+Route::post('/editclient', 'AdminController@editclient');//contact person
 
 Route::post('/editcompany', 'AdminController@editcompany');
 
@@ -214,6 +209,19 @@ Route::get('/equipment_dep', 'AdminController@EquipmentDep');
 Route::get('/equip_dep_detail', 'AdminController@EquipmentDepView');
 
 Route::get('/ejr_detail', 'AdminController@ejrDetail');
+
+/* QUERIES*/
+
+//Employee
+Route::get('/queryEmployee', 'AdminController@queryEmployee');
+
+Route::get('/searchemp', 'AdminController@searchemp');
+
+//Client
+Route::get('/queryClient', 'AdminController@queryclient');
+
+Route::get('/searchclient', 'AdminController@searchclient');
+
 
 
 Route::post('/editAdminProjContract', 'AdminController@editProjContract');

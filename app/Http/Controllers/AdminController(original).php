@@ -10,7 +10,6 @@ use PDF;
 class AdminController extends Controller
 {
 
-
   public function __construct(){
     $this->middleware('auth');
     $this->middleware('Admin');
@@ -220,61 +219,15 @@ class AdminController extends Controller
 
     return view('notification',['id' => $id, 'not' => $not, 'notif' => $notif, 'notifcount' => $notifcount, 'empPic'=>$empPic]);
   }
-  
-
-//***** CLIENT *****//
-    public function Client(){
-        $id = session('id');
-        $var = DB::table('client_rep_tbl')->join('client_tbl','client_rep_tbl.cl_no','=','client_tbl.cl_no')->where('client_rep_tbl.cr_delete',0)->get();
-    	$empPic = DB::table('employee_tbl')->where('emp_id',$id)->get();
-      
-   //notification
-		$notif = DB::table('notification_tbl as notif')
-			->join('employee_tbl as emp','emp.emp_id','=','notif.notif_from')
-			->where('notif.notif_description', 'not like', '%added a project to you%')
-			->orderBy('notif.notif_date', 'desc')
-			->take(5)->get();
-		
-		$notifcount = DB::table('notification_tbl as notif')
-			->join('employee_tbl as emp','emp.emp_id','=','notif.notif_to')
-			->where('notif.notif_admin_status','unview')->count();
-
-    
-        return view('client',['id' => $id, 'notif' => $notif, 'notifcount' => $notifcount, 'client', 'var' => $var,'empPic'=>$empPic]);
-      
-      
-    }
-
-	public function getClient(Request $req){
-        $type = DB::table('client_rep_tbl')->where('cr_id',$req->id)->get();
-        return response()->json($type);
-    }
-
-	public function editclient(){
-        DB::table('client_rep_tbl')->where('cr_id',$_POST['id'])->update([
-            'cr_first_name' => $_POST['clientFname'],
-            'cr_last_name' => $_POST['clientLname'],
-            'cr_address' => $_POST['clientAddress'],
-            'cr_email' => $_POST['clientEmail'],
-            'cr_contact' => $_POST['clientPhone'],
-            'cr_position' => $_POST['clientPosition'],
-            ]);
-        return redirect('/client');
-    }
-
-	public function deleteclient(){
-        DB::table('client_rep_tbl')->where('cr_id',$_POST['id'])->update([
-            'cr_delete' => 1
-            ]);
-        return redirect('/client');
-    }
 
 
 
 //***** COMPANY *****//
     public function Company(){
         $id = session('id');
-        $var = DB::table('client_tbl')->where('cl_delete',0)->get();
+        $var = DB::table('client_tbl')
+			->join('client_rep_tbl as cr','cr.cl_no','=','client_tbl.cl_no')
+			->where('client_tbl.cl_delete',0)->get();
         $empPic = DB::table('employee_tbl')->where('emp_id',$id)->get();
       
    //notification
@@ -298,8 +251,8 @@ class AdminController extends Controller
 
 	public function editcompany(){
     $this->validate(request(),[
-      'comName' => 'required|max:25',
-      'comAddress' => 'required|max:25',
+      'comName' => 'required|min:2',
+      'comAddress' => 'required|min:2',
       'comPhone' => 'required|min:5',
     ]);
         DB::table('client_tbl')->where('cl_no',$_POST['id'])->update([
@@ -310,10 +263,30 @@ class AdminController extends Controller
             ]);
         return redirect('/company');
     }
+	
+		public function getClient(Request $req){
+        $type = DB::table('client_rep_tbl')->where('cr_id',$req->id)->get();
+        return response()->json($type);
+    }
+
+	public function editclient(){
+        DB::table('client_rep_tbl')->where('cr_id',$_POST['id'])->update([
+            'cr_first_name' => $_POST['clientFname'],
+            'cr_last_name' => $_POST['clientLname'],
+            'cr_address' => $_POST['clientAddress'],
+            'cr_email' => $_POST['clientEmail'],
+            'cr_contact' => $_POST['clientPhone'],
+            'cr_position' => $_POST['clientPosition'],
+            ]);
+        return redirect('/company');
+    }
 
 	public function deletecompany(){
         DB::table('client_tbl')->where('cl_no',$_POST['id'])->update([
             'cl_delete' => 1
+            ]);
+		DB::table('client_rep_tbl')->where('cl_no',$_POST['id'])->update([
+            'cr_delete' => 1
             ]);
         return redirect('/company');
     }
@@ -847,10 +820,18 @@ class AdminController extends Controller
 //***** PROJECT_ADD *****//
     public function Projectadd(){
       $id = session('id');
-      $promanager = DB::table('employee_tbl')->join('users','employee_tbl.emp_id','=','users.emp_id')->where([
-        ['emp_status', '=', '0'],
-        ['el_position', 'Project Manager'],
-      ])->get();
+      
+	  
+	  $qry = 'SELECT DISTINCT emp.emp_id, emp.emp_first_name,emp.emp_middle_initial,emp.emp_last_name, emp.emp_image, emp.emp_address,
+						emp.emp_email, emp.emp_contact, users.el_position, users.username
+						FROM `employee_tbl` as emp
+						JOIN  `users` ON users.emp_id = emp.emp_id
+						LEFT JOIN  `project_info_tbl` as pi ON pi.emp_id = emp.emp_id
+						LEFT JOIN  `project_tbl` as proj ON proj.proj_no = pi.proj_no
+						WHERE pi.emp_id IS NULL AND emp.emp_status = "0" AND el_position = "Project Manager"
+						';
+	$promanager = DB::select($qry);
+						
       $plan = DB::table('task_tbl')
         ->where('task_tbl.task_delete',0)
         ->orderBy('phase_id')
@@ -1496,9 +1477,13 @@ public function ProjectEdit(){
     
     //get project info for invoice
 	public function addinvoice(Request $req){
-        $type = DB::table('project_tbl as pr')
-			->join('project_info_tbl','pr.proj_no','=','project_info_tbl.proj_no')
-			->where('pr.proj_no',$req->id)->get();
+			
+			$qry = 'SELECT * FROM `project_tbl`  as proj
+						JOIN `project_info_tbl`  as pi ON pi.proj_no = proj.proj_no
+						JOIN `invoice_tbl`  as in ON proj.proj_no = in.proj_no
+						WHERE pr.proj_no ='.$proj_no.' ORDER BY in.invoice_id DESC LIMIT 1 ';			
+			
+			$type = DB::select($qry);
         return response()->json($type);
     }
 	
@@ -1545,10 +1530,10 @@ public function ProjectEdit(){
 		foreach ($intask as $intask) {
 			$expense += $intask->pt_total_cost;
 		}
-		
-		$inper = DB::table('invoice_tbl as in')
-				->where('in.proj_no',$proj_no)
-				->where('in.invoice_no','0')->get();
+				
+		$qry = 'SELECT * FROM `invoice_tbl`  WHERE proj_no ='.$proj_no.' ORDER BY invoice_id DESC LIMIT 1 ';			
+			
+			$inper = DB::select($qry);
 		
     		foreach ($inper as $inper) {
     			$invoiceper = $inper->proj_percentage;
@@ -2261,6 +2246,129 @@ public function ProjectEdit(){
 			return $pdf->stream("Monthly Report");
         $empPic = DB::table('employee_tbl')->where('emp_id',$empid)->get();
         return view('pdfequipment',['equip' => $equip,'empPic'=>$empPic]);
+    }
+	
+/*QUERIES*/
+
+//Employee
+    public function queryEmployee(){
+        $id = session('id');
+        $var = DB::table('employee_tbl')->join('users','employee_tbl.emp_id','=','users.emp_id')->where('employee_tbl.emp_status',0)->get();
+        $type = DB::table('users')->where('el_status',0)->get();
+        $empPic = DB::table('employee_tbl')->where('emp_id',$id)->get();
+      
+		$notif = DB::table('notification_tbl as notif')
+			->join('employee_tbl as emp','emp.emp_id','=','notif.notif_from')
+			->where('notif.notif_description', 'not like', '%added a project to you%')
+			->orderBy('notif.notif_date', 'desc')
+			->take(5)->get();
+		
+		$notifcount = DB::table('notification_tbl as notif')
+			->join('employee_tbl as emp','emp.emp_id','=','notif.notif_to')
+			->where('notif.notif_admin_status','unview')->count();
+      
+    	return view('queryEmployee',['id' => $id, 'notif' => $notif, 'notifcount' => $notifcount, 'var' => $var,'type' => $type,'empPic'=>$empPic]);
+    } 
+	
+	public function searchemp(Request $req){
+			if ($req->status == 'Deployed') {
+				$qry = 'SELECT DISTINCT emp.emp_id, emp.emp_first_name,emp.emp_middle_initial,emp.emp_last_name, emp.emp_image, emp.emp_address,
+							emp.emp_email, emp.emp_contact, users.el_position, users.username, pi.pi_title, proj.proj_no
+							FROM `employee_tbl` as emp
+							JOIN  `users` ON users.emp_id = emp.emp_id
+							JOIN  `project_info_tbl` as pi ON pi.emp_id = emp.emp_id
+							JOIN  `project_tbl` as proj ON proj.proj_no = pi.proj_no
+							WHERE emp.emp_first_name LIKE "%'.$req->fname.'%" AND emp.emp_last_name LIKE "%'.$req->lname.'%"
+							AND emp.emp_middle_initial LIKE "%'.$req->mname.'%" AND emp.emp_address LIKE "%'.$req->address.'%"
+							AND users.el_position LIKE "%'.$req->position.'%" AND proj.proj_status IN ("On Going", "Pending")
+							';
+			}
+			else if ($req->status == 'Available') {
+				$qry = 'SELECT DISTINCT emp.emp_id, emp.emp_first_name,emp.emp_middle_initial,emp.emp_last_name, emp.emp_image, emp.emp_address,
+							emp.emp_email, emp.emp_contact, users.el_position, users.username
+							FROM `employee_tbl` as emp
+							JOIN  `users` ON users.emp_id = emp.emp_id
+							LEFT JOIN  `project_info_tbl` as pi ON pi.emp_id = emp.emp_id
+							LEFT JOIN  `project_tbl` as proj ON proj.proj_no = pi.proj_no
+							WHERE emp.emp_first_name LIKE "%'.$req->fname.'%" AND emp.emp_last_name LIKE "%'.$req->lname.'%"
+							AND emp.emp_middle_initial LIKE "%'.$req->mname.'%" AND emp.emp_address LIKE "%'.$req->address.'%"
+							AND users.el_position LIKE "%'.$req->position.'%" AND pi.emp_id IS NULL
+							';
+			}
+			else {
+				$qry = 'SELECT DISTINCT emp.emp_id, emp.emp_first_name,emp.emp_middle_initial,emp.emp_last_name, emp.emp_image, emp.emp_address,
+							emp.emp_email, emp.emp_contact, users.el_position, users.username
+							FROM `employee_tbl` as emp
+							JOIN  `users` ON users.emp_id = emp.emp_id
+							WHERE emp.emp_first_name LIKE "%'.$req->fname.'%" AND emp.emp_last_name LIKE "%'.$req->lname.'%"
+							AND emp.emp_middle_initial LIKE "%'.$req->mname.'%" AND emp.emp_address LIKE "%'.$req->address.'%"
+							AND users.el_position LIKE "%'.$req->position.'%" 
+							';
+			}
+			
+			$type = DB::select($qry);
+					
+	        return response()->json($type);
+    }
+	
+	//Client-Company
+	public function queryclient(){
+        $id = session('id');
+        $var = DB::table('client_tbl')
+			->join('client_rep_tbl as cr','cr.cl_no','=','client_tbl.cl_no')
+			->where('client_tbl.cl_delete',0)->get();
+        $empPic = DB::table('employee_tbl')->where('emp_id',$id)->get();
+      
+		$notif = DB::table('notification_tbl as notif')
+			->join('employee_tbl as emp','emp.emp_id','=','notif.notif_from')
+			->where('notif.notif_description', 'not like', '%added a project to you%')
+			->orderBy('notif.notif_date', 'desc')
+			->take(5)->get();
+		
+		$notifcount = DB::table('notification_tbl as notif')
+			->join('employee_tbl as emp','emp.emp_id','=','notif.notif_to')
+			->where('notif.notif_admin_status','unview')->count();
+      
+    	return view('queryClient',['id' => $id, 'notif' => $notif, 'notifcount' => $notifcount, 'var' => $var,'empPic'=>$empPic]);
+    }
+	
+	public function searchclient(Request $req){
+		if ($req->status == 'Active') {
+				$qry = 'SELECT DISTINCT cl.cl_company, cl.cl_no, cl.cl_contact, cl.cl_email,  cr.cr_id, cl.cl_address, cr.cr_first_name, cr.cr_last_name, cr.cr_position
+							FROM `client_tbl` as cl
+							JOIN  `client_rep_tbl` as cr ON cl.cl_no = cr.cl_no
+							JOIN  `contract_info_tbl` as ci ON ci.cl_no = cl.cl_no
+							JOIN  `project_tbl` as proj ON proj.ci_no = ci.ci_no
+							JOIN  `project_info_tbl` as pi ON pi.proj_no = pi.proj_no
+							WHERE cl.cl_company LIKE "%'.$req->name.'%" AND cl.cl_address LIKE "%'.$req->address.'%"
+							AND cr.cr_first_name LIKE "%'.$req->fname.'%" AND cr.cr_last_name LIKE "%'.$req->lname.'%"
+							AND cl.cl_delete = 0 AND proj.proj_status IN ("On Going", "Pending")
+							';
+			}
+			else if ($req->status == 'Inactive') {
+				$qry = 'SELECT DISTINCT cl.cl_company, cl.cl_no, cl.cl_contact, cl.cl_email,  cr.cr_id, cl.cl_address, cr.cr_first_name, cr.cr_last_name, cr.cr_position
+							FROM `client_tbl` as cl
+							JOIN  `client_rep_tbl` as cr ON cl.cl_no = cr.cl_no
+							JOIN  `contract_info_tbl` as ci ON ci.cl_no = cl.cl_no
+							JOIN  `project_tbl` as proj ON proj.ci_no = ci.ci_no
+							JOIN  `project_info_tbl` as pi ON pi.proj_no = pi.proj_no
+							WHERE cl.cl_company LIKE "%'.$req->name.'%" AND cl.cl_address LIKE "%'.$req->address.'%"
+							AND cr.cr_first_name LIKE "%'.$req->fname.'%" AND cr.cr_last_name LIKE "%'.$req->lname.'%"
+							AND cl.cl_delete = 0 AND proj.proj_status NOT IN ("On Going", "Pending")
+							';
+			}
+			else {
+				$qry = 'SELECT DISTINCT cl.cl_company, cl.cl_no, cl.cl_contact, cl.cl_email,  cr.cr_id, cl.cl_address, cr.cr_first_name, cr.cr_last_name, cr.cr_position
+							FROM `client_tbl` as cl
+							JOIN  `client_rep_tbl` as cr ON cl.cl_no = cr.cl_no
+							WHERE cl.cl_company LIKE "%'.$req->name.'%" AND cl.cl_address LIKE "%'.$req->address.'%"
+							AND cr.cr_first_name LIKE "%'.$req->fname.'%" AND cr.cr_last_name LIKE "%'.$req->lname.'%"
+							AND cl.cl_delete = 0
+							';
+			}
+			$type = DB::select($qry);
+					
+	        return response()->json($type);
     }
 
 

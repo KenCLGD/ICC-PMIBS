@@ -154,8 +154,7 @@ if it's not present, don't show loader *
               <li>
                 <a ><i class="fa fa-wrench"></i>Maintenance<span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="{{ url ('client') }}">Client</a></li>
-                  <li><a href="{{ url ('company') }}">Company</a></li>
+                  <li><a href="{{ url ('company') }}">Client Company</a></li>
                   <li><a href="{{ url ('engineer') }}">Employee</a></li>
                   <li><a href="{{ url ('phase') }}">Phases</a></li>
                   <li><a href="{{ url ('tasks') }}">Tasks</a></li>
@@ -195,6 +194,13 @@ if it's not present, don't show loader *
                 <li><a href="{{ url ('monthly_report') }}">Project Monthly Report</a></li>
                 <li><a href="{{ url ('financial') }}">Financial</a></li>
                 <li><a href="{{ url ('equipment_util') }}">Equipment Utilization</a></li>
+              </ul>
+            </li>
+            <li>
+              <a ><i class="fa fa-question-circle-o jumbo"></i>Queries<span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="{{ url ('queryEmployee') }}">Employee</a></li>
+                <li><a href="{{ url ('queryClient') }}">Client Company</a></li>
               </ul>
             </li>
           </ul>
@@ -314,7 +320,7 @@ if it's not present, don't show loader *
 <!-- /page content -->
 
 <!-- footer content -->
-<footer>
+<footer style="margin-top:-3%; ">
   <div class="pull-right">
     Alcel Construction Inc Admin by <a href="https://www.facebook.com">Shithi Inc.</a>
   </div>

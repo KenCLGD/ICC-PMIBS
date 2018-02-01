@@ -42,6 +42,7 @@
 
   <!-- Custom Theme Style -->
   <link href="../build/css/construction.css" rel="stylesheet">
+  <link href="../build/css/select2.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/bill.css">
   
   <style>
@@ -140,8 +141,7 @@ if it's not present, don't show loader *
               <li>
                 <a ><i class="fa fa-wrench" ></i>Maintenance<span class="fa fa-chevron-down"></span> </a>
                 <ul class="nav child_menu">
-                  <li><a href="{{ url ('client') }}">Client</a></li>
-                  <li><a href="{{ url ('company') }}">Company</a></li>
+                  <li><a href="{{ url ('company') }}">Client Company</a></li>
                   <li><a href="{{ url ('engineer') }}">Employee</a></li>
                   <li><a href="{{ url ('phase') }}">Phases</a></li>
                   <li><a href="{{ url ('tasks') }}">Tasks</a></li>
@@ -182,6 +182,13 @@ if it's not present, don't show loader *
                 		<li><a href="{{ url ('financial') }}">Financial</a></li>
                 		<li><a href="{{ url ('equipment_util') }}">Equipment Utilization</a></li>
               	</ul>
+            </li>
+            <li>
+              <a ><i class="fa fa-question-circle-o jumbo"></i>Queries<span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li><a href="{{ url ('queryEmployee') }}">Employee</a></li>
+                <li><a href="{{ url ('queryClient') }}">Client Company</a></li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -293,7 +300,7 @@ if it's not present, don't show loader *
 <!-- /top navigation -->
 
 <!-- page content -->
-<div class="right_col" role="main" style="">
+<div class="right_col" role="main" style="" >
   @yield('page_content')
 </div>
 <!-- /page content -->

@@ -118,7 +118,7 @@ if it's not present, don't show loader *
     //$(".se-pre-con").fadeOut("slow");;
   //});
 </script>
-@yield('page_style')
+<?php echo $__env->yieldContent('page_style'); ?>
 
 </head>
 
@@ -129,7 +129,7 @@ if it's not present, don't show loader *
     				<div class="col-md-3 left_col">
       				<div class="left_col scroll-view">
         					<div class="navbar nav_title" >
-          					<a href="{{ url ('indexAdmin') }}" class="site_title" style="text-shadow:5px 5px 5px #222;"><img src="images/logoheader.png" alt="" style="width:100%; height:100%; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222); margin-left:-10px;"></a>
+          					<a href="<?php echo e(url ('indexAdmin')); ?>" class="site_title" style="text-shadow:5px 5px 5px #222;"><img src="images/logoheader.png" alt="" style="width:100%; height:100%; -webkit-filter: drop-shadow(5px 5px 5px #222); filter: drop-shadow(5px 5px 5px #222); margin-left:-10px;"></a>
         					</div>
 
         					<div class="clearfix"></div>
@@ -142,24 +142,24 @@ if it's not present, don't show loader *
 				            		<h3>Alcel Construction Inc.</h3>
 				            		<ul class="nav side-menu">
 				              		<li>
-				                			<a href="{{ url ('indexAdmin') }}"><i class="fa fa-dashboard" ></i>Dashboard </a>
+				                			<a href="<?php echo e(url ('indexAdmin')); ?>"><i class="fa fa-dashboard" ></i>Dashboard </a>
 				              		</li>
 					             	<li>
 					               		 <a ><i class="fa fa-wrench" ></i>Maintenance<span class="fa fa-chevron-down"></span> </a>
 					               		 <ul class="nav child_menu">
-						                  	<li><a href="{{ url ('company') }}"> Client Company</a></li>
-						                  	<li><a href="{{ url ('engineer') }}">Employee</a></li>
-						                  	<li><a href="{{ url ('phase') }}">Phases</a></li>
-						                  	<li><a href="{{ url ('tasks') }}">Tasks</a></li>
-						                  	<li><a href="{{ url ('truck_category') }}">Truck Category</a></li>
+						                  	<li><a href="<?php echo e(url ('company')); ?>"> Client Company</a></li>
+						                  	<li><a href="<?php echo e(url ('engineer')); ?>">Employee</a></li>
+						                  	<li><a href="<?php echo e(url ('phase')); ?>">Phases</a></li>
+						                  	<li><a href="<?php echo e(url ('tasks')); ?>">Tasks</a></li>
+						                  	<li><a href="<?php echo e(url ('truck_category')); ?>">Truck Category</a></li>
 					                		</ul>
 					              </li>
 				              	  <li>
 				                		<a><i class="fa fa-cubes" ></i> Project Management<span class="fa fa-chevron-down"></span></a>
 				                		<ul class="nav child_menu">
-						                  <li><a href="{{ url ('project_add') }}">Add Project</a></li>
+						                  <li><a href="<?php echo e(url ('project_add')); ?>">Add Project</a></li>
 						                  <li>
-										  		<a href="{{ url ('project') }}">Projects</a>
+										  		<a href="<?php echo e(url ('project')); ?>">Projects</a>
 										  		<ul class="nav child_menu">
 				                           			 <li ><a href="/project_edit">Edit Project</a></li>
 				                       			 </ul>
@@ -167,7 +167,7 @@ if it's not present, don't show loader *
 						                  <li>
 								  		  		<a>Contracts<span class="fa fa-chevron-down"></span></a>
 												<ul class="nav child_menu">
-				                           			 <li ><a a href="{{ url ('contract') }}">All Contracts</a></li>
+				                           			 <li ><a a href="<?php echo e(url ('contract')); ?>">All Contracts</a></li>
 				                           			 <li><a>Terminated</a></li>
 				                       			 </ul>
 								 		  </li>
@@ -176,29 +176,29 @@ if it's not present, don't show loader *
 				              		<li>
 				               			<a><i class="fa fa-money" ></i> Billing<span class="fa fa-chevron-down"></span></a>
 				               			<ul class="nav child_menu">
-				                				<li><a href="{{ url ('project_financial') }}">Project Financial</a></li>
+				                				<li><a href="<?php echo e(url ('project_financial')); ?>">Project Financial</a></li>
 				              			</ul>
 				            			</li>
 				            			<li>
 				              			<a ><i class="fa fa-truck" ></i>Inventory<span class="fa fa-chevron-down"></span> </a>
 				              			<ul class="nav child_menu">
-							                <li><a href="{{ url ('equipment_add') }}">Add Equipment</a></li>
-							                <li><a href="{{ url ('equipment_dep') }}">Equipment deploy</a></li>
+							                <li><a href="<?php echo e(url ('equipment_add')); ?>">Add Equipment</a></li>
+							                <li><a href="<?php echo e(url ('equipment_dep')); ?>">Equipment deploy</a></li>
 				              			</ul>
 				            			</li>
 				            			<li>
 				              			<a ><i class="fa fa-file-pdf-o jumbo" ></i>Report<span class="fa fa-chevron-down"></span> </a>
 				              			<ul class="nav child_menu">
-							                <li><a href="{{ url ('monthly_report') }}">Project Monthly Report</a></li>
-							                <li><a href="{{ url ('financial') }}">Financial</a></li>
-							                <li><a href="{{ url ('equipment_util') }}">Equipment Utilization</a></li>
+							                <li><a href="<?php echo e(url ('monthly_report')); ?>">Project Monthly Report</a></li>
+							                <li><a href="<?php echo e(url ('financial')); ?>">Financial</a></li>
+							                <li><a href="<?php echo e(url ('equipment_util')); ?>">Equipment Utilization</a></li>
 							             </ul>
 							         </li>
 						            <li>
 						              <a ><i class="fa fa-question-circle-o jumbo"></i>Queries<span class="fa fa-chevron-down"></span></a>
 						              <ul class="nav child_menu">
-						                <li><a href="{{ url ('queryEmployee') }}">Employee</a></li>
-                							<li><a href="{{ url ('queryClient') }}">Client Company</a></li>
+						                <li><a href="<?php echo e(url ('queryEmployee')); ?>">Employee</a></li>
+                							<li><a href="<?php echo e(url ('queryClient')); ?>">Client Company</a></li>
 						              </ul>
 						            </li>
 				          		</ul>
@@ -226,30 +226,31 @@ if it's not present, don't show loader *
 		        		<ul class="nav navbar-nav navbar-right">
 		          		<li class="">
 		            			<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-		              		@foreach($empPic as $empPic)
-		              			<img src="images/profile/{{$empPic->emp_image}}" alt="">{{$empPic->emp_first_name}} {{$empPic->emp_last_name}}
+		              		<?php $__currentLoopData = $empPic; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $empPic): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+		              			<img src="images/profile/<?php echo e($empPic->emp_image); ?>" alt=""><?php echo e($empPic->emp_first_name); ?> <?php echo e($empPic->emp_last_name); ?>
+
 		              			<span class=" fa fa-angle-down"></span>
-		            			@endforeach                  
+		            			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                  
 							</a>
 				            <ul class="dropdown-menu dropdown-usermenu pull-right">
-				              	<li><a href="{{ url ('profileAdmin') }}"> Profile</a></li>
+				              	<li><a href="<?php echo e(url ('profileAdmin')); ?>"> Profile</a></li>
 				             	<li><a href="/admin_logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 				            </ul>
 		          		</li>
 		          		<li role="presentation" class="dropdown">
-		            			<a id="notif" data-id="{{$id}}" style="cursor:pointer" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+		            			<a id="notif" data-id="<?php echo e($id); ?>" style="cursor:pointer" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
 		              			<img src="/images/notification-flat.png" class="w3-animate-top" style="width:2.2em; margin-top:-2px">
 		             		 	<?php if($notifcount > 0) {
 		                				echo "<span class='badge bg-green w3-animate-zoom' id='notifcount'>". $notifcount ."</span>";
 		              			} ?>
 		            			</a>
 				            <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-				              @foreach($notif as $notif)
+				              <?php $__currentLoopData = $notif; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notif): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 				              <li>
-				                <a href="{{$notif->notif_url}}">
-				                  <span class="image"><img src="images/profile/{{$notif->emp_image}}" alt="Profile Image" /></span>
+				                <a href="<?php echo e($notif->notif_url); ?>">
+				                  <span class="image"><img src="images/profile/<?php echo e($notif->emp_image); ?>" alt="Profile Image" /></span>
 				                  <span>
-				                    <strong><span>{{$notif->emp_first_name}} {{$notif->emp_last_name}}</span></strong>
+				                    <strong><span><?php echo e($notif->emp_first_name); ?> <?php echo e($notif->emp_last_name); ?></span></strong>
 				                    <span class="time" style="right:0px;margin-top:-20px">
 				                     <?php
 				                     $time = 0;
@@ -286,15 +287,16 @@ if it's not present, don't show loader *
 				                   }
 				                 }
 				                 ?>
-				                 <img src="/images/icon/{{$notif->notif_icon}}" style="height:45px; margin-top:20px; margin-right:5px;">
+				                 <img src="/images/icon/<?php echo e($notif->notif_icon); ?>" style="height:45px; margin-top:20px; margin-right:5px;">
 				               </span>
 				             </span>
 				             <span class="message" style="width:90%">
-				              {{$notif->notif_description}}
+				              <?php echo e($notif->notif_description); ?>
+
 				            </span>
 				          </a>
 				        </li>
-				        @endforeach
+				        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 				        <li>
 				          <div class="text-center">
 				            <a href="/notification">
@@ -366,17 +368,18 @@ if it's not present, don't show loader *
 											</div>
 											<div class="x_content">
 													<form method="post" class="form-horizontal form-label-left input_mask" action="/editproject" data-parsley-validate>
-													{{csrf_field()}}
-													@foreach($proj as $proj)
+													<?php echo e(csrf_field()); ?>
+
+													<?php $__currentLoopData = $proj; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $proj): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 													<div class="col-md-12 col-sm-12 col-xs-24".>
 
 															<div class="col-md-8 col-sm-8 col-xs-16 form-group has-feedback" style="margin-top:2%;">
-																<input value="{{$proj->pi_title}}" type="text" class="form-control has-feedback-left" id="project-name" name="project-name" placeholder="Project Name" required>
+																<input value="<?php echo e($proj->pi_title); ?>" type="text" class="form-control has-feedback-left" id="project-name" name="project-name" placeholder="Project Name" required>
 																<span class="fa fa-building form-control-feedback left" aria-hidden="true"></span>
 															</div>
 
 															<div class="col-md-4 col-sm-4 col-xs-8 form-group has-feedback" style="margin-top:2%;">
-																<input value="{{$proj->proj_no}}" style="text-align: right;" type="text" id="project-id" class="form-control col-md-7 col-xs-12" name="project-id" placeholder="1"  readonly>
+																<input value="<?php echo e($proj->proj_no); ?>" style="text-align: right;" type="text" id="project-id" class="form-control col-md-7 col-xs-12" name="project-id" placeholder="1"  readonly>
 																<span class=" form-control-feedback left" aria-hidden="true" style="color:#000; margin-top: 5px;">ID</span>
 															</div>
 
@@ -385,9 +388,9 @@ if it's not present, don't show loader *
 																<div>
 																	<select class="form-control" required id="project-manager" name="project-manager">
 																		<option value="default" disabled selected>Select Project Manager</option>
-																			@foreach($PM as $PM)
-																			<option value="{{$PM->emp_id}}" @if ($proj->emp_id==$PM->emp_id) selected @else @endif >{{$PM->emp_first_name}} {{$PM->emp_last_name}} </option>
-																			@endforeach
+																			<?php $__currentLoopData = $PM; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $PM): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+																			<option value="<?php echo e($PM->emp_id); ?>" <?php if($proj->emp_id==$PM->emp_id): ?> selected <?php else: ?> <?php endif; ?> ><?php echo e($PM->emp_first_name); ?> <?php echo e($PM->emp_last_name); ?> </option>
+																			<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 																	</select>
 																</div>
 															</div>
@@ -399,52 +402,52 @@ if it's not present, don't show loader *
 																	<div class="controls">
 																		<div class="input-prepend input-group">
 																			<span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-																			<input readonly onchange="sync()" type="text" name="reservation" id="reservation" class="form-control" value="{{date('m/d/Y', strtotime ($proj->proj_start_date))}} - {{date('m/d/Y', strtotime ($proj->proj_end_date))}}" />
+																			<input readonly onchange="sync()" type="text" name="reservation" id="reservation" class="form-control" value="<?php echo e(date('m/d/Y', strtotime ($proj->proj_start_date))); ?> - <?php echo e(date('m/d/Y', strtotime ($proj->proj_end_date))); ?>" />
 																		</div>
 																	</div>
 																</div>
 																</fieldset>
 																<!--for inside transaction-->
-																<input type="hidden" id="start" name="start" value="{{$proj->proj_start_date}}" >
-																<input type="hidden" id="end" name="end" value="{{$proj->proj_end_date}}">
-																<input type="hidden" value="{{$proj->ci_desc}}" id="contype">
+																<input type="hidden" id="start" name="start" value="<?php echo e($proj->proj_start_date); ?>" >
+																<input type="hidden" id="end" name="end" value="<?php echo e($proj->proj_end_date); ?>">
+																<input type="hidden" value="<?php echo e($proj->ci_desc); ?>" id="contype">
 																<!--//for inside transacction-->
 															</div>
 
 															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" id="floor-nono" style="margin-top: 3px;">
 																<label> Number of Floor/s</label>
-																<input type="text" value="{{$proj->pi_floor_no}}"  class="form-control has-feedback-left" name="floor-no" id="floor-no" placeholder="No of Floor/s" required="required" style="background-color: #fff">
+																<input type="text" value="<?php echo e($proj->pi_floor_no); ?>"  class="form-control has-feedback-left" name="floor-no" id="floor-no" placeholder="No of Floor/s" required="required" style="background-color: #fff">
 																<span class="fa fa-building form-control-feedback left" aria-hidden="true"></span>
 															</div>
 
 															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" id="floor-areaa" style="margin-top: 3px;">
 																<label>Floor Area  (sq.m.)</label>
-																<input type="text"value="{{$proj->pi_floor_area}}"  class="form-control has-feedback-left" name="floor-area" id="floor-area" placeholder="Floor Area (square feet)" required="required" style="background-color: #fff">
+																<input type="text"value="<?php echo e($proj->pi_floor_area); ?>"  class="form-control has-feedback-left" name="floor-area" id="floor-area" placeholder="Floor Area (square feet)" required="required" style="background-color: #fff">
 																<span class="fa fa-building form-control-feedback left" aria-hidden="true"></span>
 															</div>
 
 															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" id="road-lengthh" style="margin-top: 5px;">
 																<label> Total Length Road (km)</label>
-																<input type="text" value="{{$proj->pi_road_length}}"  class="form-control has-feedback-left" name="road-length" id="road-length" placeholder="Road Length (km)" required="required" style="background-color: #fff">
+																<input type="text" value="<?php echo e($proj->pi_road_length); ?>"  class="form-control has-feedback-left" name="road-length" id="road-length" placeholder="Road Length (km)" required="required" style="background-color: #fff">
 																<span class="fa fa-building form-control-feedback left" aria-hidden="true"></span>
 															</div>
 
 															<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" id="road-typee" style="margin-top: 5px;">
 																<label>Road Type</label>
-																<input type="text"value="{{$proj->pi_road_type}}"  class="form-control has-feedback-left" name="road-type" id="road-type" placeholder="Road Type" required="required" style="background-color: #fff">
+																<input type="text"value="<?php echo e($proj->pi_road_type); ?>"  class="form-control has-feedback-left" name="road-type" id="road-type" placeholder="Road Type" required="required" style="background-color: #fff">
 																<span class="fa fa-building form-control-feedback left" aria-hidden="true"></span>
 															</div>
 
 															<div class="form-group col-md-12 col-sm-12 col-xs-24" style="margin-top: 5px;">
 																<div class="form-group">
 																	<label>Project Site</label>
-																	<input value="{{$proj->pi_construction_site}}" type="text" id="project-site" name="project-site" class="form-control" placeholder="Project Site"  required >
+																	<input value="<?php echo e($proj->pi_construction_site); ?>" type="text" id="project-site" name="project-site" class="form-control" placeholder="Project Site"  required >
 																</div>
 															</div>
 
 															<div class="form-group col-md-12 col-sm-12 col-xs-24" style="margin-top:5px;">
 																<label >Project Description</label>
-																<textarea class="resizable_textarea form-control" name-="project-desc" id="project-desc" name="project-desc" rows="5" cols="50" required >{{$proj->pi_description}}</textarea>
+																<textarea class="resizable_textarea form-control" name-="project-desc" id="project-desc" name="project-desc" rows="5" cols="50" required ><?php echo e($proj->pi_description); ?></textarea>
 															</div>
 
 
@@ -458,8 +461,8 @@ if it's not present, don't show loader *
 													</form>
 
 													<!-- Hidden input for inside transactions-->
-													<input type="hidden" id="project-percentage" value="{{$proj->proj_percentage}}">
-													<input type="hidden" id="payment-mode" value="{{$proj->ci_payment_mode}}">
+													<input type="hidden" id="project-percentage" value="<?php echo e($proj->proj_percentage); ?>">
+													<input type="hidden" id="payment-mode" value="<?php echo e($proj->ci_payment_mode); ?>">
 													<input type="hidden" id="done">
 													<!-- Notifications -->
 													<button id="payment-notif" style="display: none" class="btn btn-default source" onclick="new PNotify({
@@ -491,38 +494,38 @@ if it's not present, don't show loader *
 													</tr>
 												</thead>
 												<tbody>
-													@foreach($ter as $ter)
+													<?php $__currentLoopData = $ter; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ter): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 													<tr>
 														<td style="text-align:right">
-															@if($ter->ter_status == 'Sent')
+															<?php if($ter->ter_status == 'Sent'): ?>
 															<div class="btn-group">
-																<a href="/approvetimeextreq?id={{$ter->ter_id}}"><button class="btn btn-success btn-sm" style="width:48%;" data-toggle="tooltip" data-placement="left" title="Approve Request"><i class="fa fa-check"></i></button></a>
-																<a href="/rejecttimeextreq?id={{$ter->ter_id}}"><button class="btn btn-danger btn-sm" style="width:48%;" data-toggle="tooltip" data-placement="right" title="Reject Request"><i class="fa fa-close"></i></button></a>
-																<a href="/pdftimeextreq?id={{$ter->ter_id}}"><button class="btn btn-primary btn-sm" style="width:100%;" data-toggle="tooltip" data-placement="left" title="Download Time Extension Request Letter"><i class="fa fa-file-pdf-o"></i></button></a>
+																<a href="/approvetimeextreq?id=<?php echo e($ter->ter_id); ?>"><button class="btn btn-success btn-sm" style="width:48%;" data-toggle="tooltip" data-placement="left" title="Approve Request"><i class="fa fa-check"></i></button></a>
+																<a href="/rejecttimeextreq?id=<?php echo e($ter->ter_id); ?>"><button class="btn btn-danger btn-sm" style="width:48%;" data-toggle="tooltip" data-placement="right" title="Reject Request"><i class="fa fa-close"></i></button></a>
+																<a href="/pdftimeextreq?id=<?php echo e($ter->ter_id); ?>"><button class="btn btn-primary btn-sm" style="width:100%;" data-toggle="tooltip" data-placement="left" title="Download Time Extension Request Letter"><i class="fa fa-file-pdf-o"></i></button></a>
 															</div>
-															@elseif($ter->ter_status == 'Waiting')
+															<?php elseif($ter->ter_status == 'Waiting'): ?>
 															<div class="btn-group">
-																<a href="/approvetimeextreq?id={{$ter->ter_id}}"><button class="btn btn-success btn-sm" style="width:48%;" data-toggle="tooltip" data-placement="left" title="Approve Request"><i class="fa fa-check"></i></button></a>
-																<a href="/rejecttimeextreq?id={{$ter->ter_id}}"><button class="btn btn-danger btn-sm" style="width:48%;" data-toggle="tooltip" data-placement="right" title="Reject Request"><i class="fa fa-close"></i></button></a>
-																<a href="/pdftimeextreq?id={{$ter->ter_id}}"><button class="btn btn-primary btn-sm" style="width:100%;" data-toggle="tooltip" data-placement="left" title="Download Time Extension Request Letter"><i class="fa fa-file-pdf-o"></i></button></a>
-															</div>@else
-															<a href="/files/time extension request/{{$ter->ter_no}}.pdf" download><button class="btn btn-primary btn-sm" style="width:100%;" data-toggle="tooltip" data-placement="left" title="Download Time Extension Request Letter"><i class="fa fa-file-pdf-o"></i></button></a>
-															@endif
+																<a href="/approvetimeextreq?id=<?php echo e($ter->ter_id); ?>"><button class="btn btn-success btn-sm" style="width:48%;" data-toggle="tooltip" data-placement="left" title="Approve Request"><i class="fa fa-check"></i></button></a>
+																<a href="/rejecttimeextreq?id=<?php echo e($ter->ter_id); ?>"><button class="btn btn-danger btn-sm" style="width:48%;" data-toggle="tooltip" data-placement="right" title="Reject Request"><i class="fa fa-close"></i></button></a>
+																<a href="/pdftimeextreq?id=<?php echo e($ter->ter_id); ?>"><button class="btn btn-primary btn-sm" style="width:100%;" data-toggle="tooltip" data-placement="left" title="Download Time Extension Request Letter"><i class="fa fa-file-pdf-o"></i></button></a>
+															</div><?php else: ?>
+															<a href="/files/time extension request/<?php echo e($ter->ter_no); ?>.pdf" download><button class="btn btn-primary btn-sm" style="width:100%;" data-toggle="tooltip" data-placement="left" title="Download Time Extension Request Letter"><i class="fa fa-file-pdf-o"></i></button></a>
+															<?php endif; ?>
 														</td>
-														<td style="text-align:center">{{$ter->ter_date}}</td>
-														<td>{{$ter->ter_days}}</td>
-														<td>{{$ter->ter_reason}}</td>
+														<td style="text-align:center"><?php echo e($ter->ter_date); ?></td>
+														<td><?php echo e($ter->ter_days); ?></td>
+														<td><?php echo e($ter->ter_reason); ?></td>
 														<td style="text-align:center">
-															@if($ter->ter_status=='Waiting')
+															<?php if($ter->ter_status=='Waiting'): ?>
 															<span style="font-size: 1.1em; font-weight: bold;color:OrangeRed">Pending</span>
-															@elseif($ter->ter_status=='Approved')
-															<span style="font-size: 1.1em; font-weight: bold;color:green">{{$ter->ter_status}}</span>
-															@else
-															<span style="font-size: 1.1em; font-weight: bold;color:red">{{$ter->ter_status}}</span>
-															@endif
+															<?php elseif($ter->ter_status=='Approved'): ?>
+															<span style="font-size: 1.1em; font-weight: bold;color:green"><?php echo e($ter->ter_status); ?></span>
+															<?php else: ?>
+															<span style="font-size: 1.1em; font-weight: bold;color:red"><?php echo e($ter->ter_status); ?></span>
+															<?php endif; ?>
 														</td>
 													</tr> 
-													@endforeach
+													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 												</tbody>
 											</table>
 										</div>
@@ -538,13 +541,14 @@ if it's not present, don't show loader *
 										<div class="x_content">
 
 										<form method="post" class="form-horizontal form-label-left input_mask" action="/editProjRemarks" data-parsley-validate>
-											{{csrf_field()}}
+											<?php echo e(csrf_field()); ?>
+
 											<div class="form-group col-md-12 col-sm-12 col-xs-24">
 												<p class="text-muted font-13 m-b-30" style="margin-bottom:3%;">
 													Information entered here will be shown on "Project Status Monthly Report".  Please update your remarks monthly.
 												</p>
-												<input type="hidden" value="{{$proj->proj_no}}" name="proj_no">
-												<textarea class="resizable_textarea form-control" name-="project-remarks" id="project-remarks" name="project-remarks" rows="8" cols="50" required >{{$proj->pi_remarks}}</textarea>
+												<input type="hidden" value="<?php echo e($proj->proj_no); ?>" name="proj_no">
+												<textarea class="resizable_textarea form-control" name-="project-remarks" id="project-remarks" name="project-remarks" rows="8" cols="50" required ><?php echo e($proj->pi_remarks); ?></textarea>
 											</div>
 											<br/>
 											<div class="ln_solid" style="margin-top: 40%;"></div>
@@ -567,47 +571,47 @@ if it's not present, don't show loader *
 									</div>
 									<div class="x_content well" style="padding:20px">
 										<h2 class="StepTitle" style="text-align:left; margin-bottom: 25px;"><strong>Project Manager</strong></h2>
-										<h4><strong>Name:</strong> {{$proj->emp_first_name}} {{$proj->emp_last_name}}</h4>
-										<h4><strong>Job Title:</strong> {{$proj->el_position}}</h4>
-										<h4><strong>Email:</strong> {{$proj->emp_email}}</h4>
-										<h4><strong>Telephone:</strong> {{$proj->emp_contact}}</h4>
+										<h4><strong>Name:</strong> <?php echo e($proj->emp_first_name); ?> <?php echo e($proj->emp_last_name); ?></h4>
+										<h4><strong>Job Title:</strong> <?php echo e($proj->el_position); ?></h4>
+										<h4><strong>Email:</strong> <?php echo e($proj->emp_email); ?></h4>
+										<h4><strong>Telephone:</strong> <?php echo e($proj->emp_contact); ?></h4>
 
 										<br />
 
 										<div class="ln_solid" style="margin-top: 8%;"></div>
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-24 " style="width:100%;">
-												<button type="submit" data-id="{{$proj->proj_no}}" class="btn btn-success editclient" style="width:100%">Edit client information</button>
+												<button type="submit" data-id="<?php echo e($proj->proj_no); ?>" class="btn btn-success editclient" style="width:100%">Edit client information</button>
 											</div>
 										</div>
 
 										<div class="ln_solid" style="margin-top: 33%;"></div>
 										<h2 class="StepTitle" style="text-align:left; margin-bottom: 15px;"><strong>Project Status</strong></h2>
 										<table>
-											@php $task2 = $task @endphp
-											@foreach($task2 as $task2)
+											<?php  $task2 = $task  ?>
+											<?php $__currentLoopData = $task2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $task2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 											<tr>
-												<td style="width:20%;">@if($task2->pt_status=='Complete') <span class="label label-success"><i class="fa fa-check"></i></span> @else <span class="label label-danger"><i class="fa fa-close"></i></span> @endif</td>
-												<td style="width:80%;"><h5><strong>{{$task2->task_description}}</strong></h5></td>
+												<td style="width:20%;"><?php if($task2->pt_status=='Complete'): ?> <span class="label label-success"><i class="fa fa-check"></i></span> <?php else: ?> <span class="label label-danger"><i class="fa fa-close"></i></span> <?php endif; ?></td>
+												<td style="width:80%;"><h5><strong><?php echo e($task2->task_description); ?></strong></h5></td>
 											</tr>
-											@endforeach
+											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 										</table>
 
 										<div class="ln_solid" style="margin-top: 0%;"></div>
 										<div class="form-group">
 											<div class="col-md-12 col-sm-12 col-xs-24 " style="width:100%;">
-												<a href="/monthlyreport?id={{$proj->proj_no}}"><button class="btn btn-success" style="margin-top: 13px; width:100%">Monthly Report</button></a>
+												<a href="/monthlyreport?id=<?php echo e($proj->proj_no); ?>"><button class="btn btn-success" style="margin-top: 13px; width:100%">Monthly Report</button></a>
 												
-												<button type="submit" data-id="{{$proj->proj_no}}" class="btn btn-success addinvoice" style="margin-top: 13px; width:100%">Create an Invoice</button>
+												<button type="submit" data-id="<?php echo e($proj->proj_no); ?>" class="btn btn-success addinvoice" style="margin-top: 13px; width:100%">Create an Invoice</button>
 									
-												@if ($proj->proj_status == 'Closed')
-												<a href="/openproject?id={{$proj->proj_no}}"><button class="btn btn-success" style="margin-top: 13px; width:100%">Open Project</button></a>
-												@else
-												<a href="/closeproject?id={{$proj->proj_no}}"><button class="btn btn-success" style="margin-top: 13px; width:100%">Close Project</button></a>
-												@endif
+												<?php if($proj->proj_status == 'Closed'): ?>
+												<a href="/openproject?id=<?php echo e($proj->proj_no); ?>"><button class="btn btn-success" style="margin-top: 13px; width:100%">Open Project</button></a>
+												<?php else: ?>
+												<a href="/closeproject?id=<?php echo e($proj->proj_no); ?>"><button class="btn btn-success" style="margin-top: 13px; width:100%">Close Project</button></a>
+												<?php endif; ?>
 											</div>
 										</div>
-										@endforeach
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									</div>
 								</div>
 							</div>
@@ -622,19 +626,20 @@ if it's not present, don't show loader *
 
 						<!-- start form for validation -->
 						<form method="post" class="form-horizontal form-label-left input_mask" action="/editAdminProjContract" data-parsley-validate>
-							{{csrf_field()}}
-							@foreach($contract as $contract)
-							<input type="hidden" value="{{$contract->proj_no}}" name="proj_no">
+							<?php echo e(csrf_field()); ?>
+
+							<?php $__currentLoopData = $contract; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $contract): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+							<input type="hidden" value="<?php echo e($contract->proj_no); ?>" name="proj_no">
 							<label >Contract Title</label>
-							<input type="text" id="ci_name" class="form-control" name="ci_name" value="{{$contract->ci_name}}" required />
+							<input type="text" id="ci_name" class="form-control" name="ci_name" value="<?php echo e($contract->ci_name); ?>" required />
 
 							<label style="margin-top: 4%;">Contract Type*:</label>
 							<p>
 								Horizontal
-								<input type="radio" class="flat" name="ci_desc" id="Horizontal" disabled value="Horizontal" @if($contract->ci_desc=='Horizontal') checked @else @endif  />
+								<input type="radio" class="flat" name="ci_desc" id="Horizontal" disabled value="Horizontal" <?php if($contract->ci_desc=='Horizontal'): ?> checked <?php else: ?> <?php endif; ?>  />
 								Vertical
-								<input type="radio" class="flat" name="ci_desc" id="Vertical" disabled  value="Vertical" @if($contract->ci_desc=='Vertical') checked @else @endif />
-								@endforeach
+								<input type="radio" class="flat" name="ci_desc" id="Vertical" disabled  value="Vertical" <?php if($contract->ci_desc=='Vertical'): ?> checked <?php else: ?> <?php endif; ?> />
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 							</p>
 
 							<!-- start task list -->
@@ -645,14 +650,14 @@ if it's not present, don't show loader *
 									</tr>
 								</thead>
 								<tbody>
-									@php $plan1 = $plan @endphp
-									@foreach($plan1 as $plan1)
+									<?php  $plan1 = $plan  ?>
+									<?php $__currentLoopData = $plan1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $plan1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 									<tr>
 										<td>
-											<a data-toggle="tooltip" data-placement="left" title="Price per unit:₱<?php $number = $plan1->task_unit_cost; echo number_format ( $number , "2" , "." , "," )?>/{{$plan1->task_unit}} Quantity:{{$plan1->pt_qty}} {{$plan1->task_unit}}  Total_Cost:₱<?php $number = $plan1->pt_total_cost; echo number_format ( $number , "2" , "." , "," )?>">{{$plan1->task_description}}</a>
+											<a data-toggle="tooltip" data-placement="left" title="Price per unit:₱<?php $number = $plan1->task_unit_cost; echo number_format ( $number , "2" , "." , "," )?>/<?php echo e($plan1->task_unit); ?> Quantity:<?php echo e($plan1->pt_qty); ?> <?php echo e($plan1->task_unit); ?>  Total_Cost:₱<?php $number = $plan1->pt_total_cost; echo number_format ( $number , "2" , "." , "," )?>"><?php echo e($plan1->task_description); ?></a>
 										</td>
 									</tr>
-									@endforeach
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</tbody>
 							</table>
 							<br/>
@@ -661,7 +666,7 @@ if it's not present, don't show loader *
 								<div class="col-md-12 col-sm-12 col-xs-24 " style="margin-top:-5%; margin-bottom:5px;">
 									<!--<button type="submit" class="btn btn-success" style="width:100%">Edit Contract Details</button>-->
 								</form>
-								<a href="/previewcontract?id={{$proj->proj_no}}" class="btn btn-success" style="margin-top: 13px; width:100%">Preview Contract</a>
+								<a href="/previewcontract?id=<?php echo e($proj->proj_no); ?>" class="btn btn-success" style="margin-top: 13px; width:100%">Preview Contract</a>
 							</div>
 						</div>
 						<!-- end form for validations -->
@@ -676,37 +681,38 @@ if it's not present, don't show loader *
                         <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="client-tab">
 						
                          	<form method="post" action="/editAdminClientCompany">
-								{{csrf_field()}}
-								<input type="hidden" id="id" name="id" value="{{$proj->proj_no}}">
+								<?php echo e(csrf_field()); ?>
+
+								<input type="hidden" id="id" name="id" value="<?php echo e($proj->proj_no); ?>">
 								<h2 class="StepTitle" style="text-align:center; margin-bottom: 15px; margin-top: 30px;">Client Information</h2>
-								@foreach($client as $client)
+								<?php $__currentLoopData = $client; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $client): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-									<input type="text" class="form-control has-feedback-left" value="{{$client->cr_first_name}}" id="client_fname" name="client_fname" required="required" placeholder="First Name">
+									<input type="text" class="form-control has-feedback-left" value="<?php echo e($client->cr_first_name); ?>" id="client_fname" name="client_fname" required="required" placeholder="First Name">
 									<span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 								</div>
 
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-									<input type="text" class="form-control" value="{{$client->cr_last_name}}" id="client_lname" name="client_lname" required="required" placeholder="Last Name">
+									<input type="text" class="form-control" value="<?php echo e($client->cr_last_name); ?>" id="client_lname" name="client_lname" required="required" placeholder="Last Name">
 									<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 								</div>
 
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-									<input type="text" class="form-control has-feedback-left" value="{{$client->cr_email}}" id="client_email" name="client_email" required="required" placeholder="Email">
+									<input type="text" class="form-control has-feedback-left" value="<?php echo e($client->cr_email); ?>" id="client_email" name="client_email" required="required" placeholder="Email">
 									<span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
 								</div>
 
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-									<input type="text" class="form-control" id="client_phone" value="{{$client->cr_contact}}" name="client_phone" required="required" placeholder="Phone" maxlength="11" >
+									<input type="text" class="form-control" id="client_phone" value="<?php echo e($client->cr_contact); ?>" name="client_phone" required="required" placeholder="Phone" maxlength="11" >
 									<span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
 								</div>
 
 								<div class="col-md-9 col-sm-9 col-xs-18 form-group has-feedback" style="margin-bottom:20px;">
-									<input type="text" class="form-control has-feedback-left" value="{{$client->cr_address}}" id="client_address" name="client_address" required="required" placeholder="Address">
+									<input type="text" class="form-control has-feedback-left" value="<?php echo e($client->cr_address); ?>" id="client_address" name="client_address" required="required" placeholder="Address">
 									<span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
 								</div>
 
 								<div class="col-md-3 col-sm-3 col-xs-6 form-group has-feedback" style="margin-bottom:20px;">
-									<input type="text" class="form-control" id="client_position" value="{{$client->cr_position}}" name="client_position" required="required" placeholder="Position">
+									<input type="text" class="form-control" id="client_position" value="<?php echo e($client->cr_position); ?>" name="client_position" required="required" placeholder="Position">
 									<span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
 								</div>
 
@@ -715,31 +721,31 @@ if it's not present, don't show loader *
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">Company Name <span class="required">*</span>
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input type="text" id="company-name" value="{{$client->cl_company}}" name="company-name" required="required" class="form-control col-md-7 col-xs-12" name="company-name">
+										<input type="text" id="company-name" value="<?php echo e($client->cl_company); ?>" name="company-name" required="required" class="form-control col-md-7 col-xs-12" name="company-name">
 									</div>
 								</div>
 								<div class="form-group col-md-12 col-sm-12 col-xs-24">
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">Address <span class="required">*</span>
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input type="text" id="company-address" value="{{$client->cl_address}}" name="company-address" required="required" class="form-control col-md-7 col-xs-12" name="company-address">
+										<input type="text" id="company-address" value="<?php echo e($client->cl_address); ?>" name="company-address" required="required" class="form-control col-md-7 col-xs-12" name="company-address">
 									</div>
 								</div>
 								<div class="form-group col-md-12 col-sm-12 col-xs-24">
 									<label  class="control-label col-md-3 col-sm-3 col-xs-12">Telephone No. <span class="required">*</span>
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12">
-										<input type="text" id="company-phone" value="{{$client->cl_contact}}" maxlength="11" name="company-phone" required="required" class="form-control col-md-7 col-xs-12" name="company-address">
+										<input type="text" id="company-phone" value="<?php echo e($client->cl_contact); ?>" maxlength="11" name="company-phone" required="required" class="form-control col-md-7 col-xs-12" name="company-address">
 									</div>
 								</div>
 								<div class="form-group col-md-12 col-sm-12 col-xs-24" >
 									<label class="control-label col-md-3 col-sm-3 col-xs-12">Email Address <span class="required">*</span>
 									</label>
 									<div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 1%">
-										<input type="text" id="company-email" value="{{$client->cl_email}}" name="company-email" required="required" class="form-control col-md-7 col-xs-12" name="company-address">
+										<input type="text" id="company-email" value="<?php echo e($client->cl_email); ?>" name="company-email" required="required" class="form-control col-md-7 col-xs-12" name="company-address">
 									</div>
 								</div>
-								@endforeach
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								<div class="modal-footer"style="margin-top: 20%">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 									<button type="submit" class="btn btn-success" >Edit Details</button>
@@ -770,41 +776,42 @@ if it's not present, don't show loader *
 												</tr>
 											</thead>
 											<tbody>
-												@php $task1 = $task @endphp
-												@foreach($task1 as $task1)
+												<?php  $task1 = $task  ?>
+												<?php $__currentLoopData = $task1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $task1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 												<tr>
 													<td>
 														<div class="col-md-24 col-xs-24">
 															<div class="flex">
 																<ul class="list-inline widget_profile_box">
 																	<li style="width:75%; margin-top:-8px;">
-																		<h3 style="color:#232323; font-size: 1.7em;">{{$task1->task_description}} </h3>
+																		<h3 style="color:#232323; font-size: 1.7em;"><?php echo e($task1->task_description); ?> </h3>
 																	</li>
 																	<li style="width:25%; text-align:right; margin-top:-7px;">
-																		<h3><span class="label @if($task1->pt_end_date != '1111-11-11') 
-																			@if(strtotime($task1->pt_end_date) < strtotime('now') && $task1->pt_percentage!=100) label-danger 
-																			@elseif($task1->pt_status=='Complete') label-success 
-																			@elseif($task1->pt_status=='Pending') label-default 
-																			@else label-warning
-																			@endif
-																			@else
+																		<h3><span class="label <?php if($task1->pt_end_date != '1111-11-11'): ?> 
+																			<?php if(strtotime($task1->pt_end_date) < strtotime('now') && $task1->pt_percentage!=100): ?> label-danger 
+																			<?php elseif($task1->pt_status=='Complete'): ?> label-success 
+																			<?php elseif($task1->pt_status=='Pending'): ?> label-default 
+																			<?php else: ?> label-warning
+																			<?php endif; ?>
+																			<?php else: ?>
 																			label-default
-																			@endif">
-																			@if($task1->pt_end_date != '1111-11-11')
-																			@if(strtotime($task1->pt_end_date) < strtotime("now") && $task1->pt_percentage != 100) Delayed 
-																			@else {{$task1->pt_status}} 
-																			@endif
-																			@else
-																			{{$task1->pt_status}}
-																			@endif
+																			<?php endif; ?>">
+																			<?php if($task1->pt_end_date != '1111-11-11'): ?>
+																			<?php if(strtotime($task1->pt_end_date) < strtotime("now") && $task1->pt_percentage != 100): ?> Delayed 
+																			<?php else: ?> <?php echo e($task1->pt_status); ?> 
+																			<?php endif; ?>
+																			<?php else: ?>
+																			<?php echo e($task1->pt_status); ?>
+
+																			<?php endif; ?>
 																		</span></h3>
 																	</li>
 																	<li style="width:100%">
 																		<div class="project_progress" style="text-align:center;">
 																			<div class="progress progress_sm">
-																				<div class="progress-bar bg-green" role="progressbar" data-transitiongoal="{{$task1->pt_percentage}}"></div>
+																				<div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?php echo e($task1->pt_percentage); ?>"></div>
 																			</div>
-																			<small>{{$task1->pt_percentage}}% Complete</small>
+																			<small><?php echo e($task1->pt_percentage); ?>% Complete</small>
 																		</div>
 																	</li>
 																</ul>
@@ -812,25 +819,25 @@ if it's not present, don't show loader *
 															<div class="flex">
 																<ul class="list-inline count2">
 																	<li style="text-align:center; width:30%">
-																		<span>Start Date: {{$task1->pt_start_date}}</span>
+																		<span>Start Date: <?php echo e($task1->pt_start_date); ?></span>
 																	</li>
 																	<li style="text-align:center; width:40%">
-																		<span style="color: @if($task1->pt_expense>$task1->pt_total_cost) #c60303 @else @endif"> 
+																		<span style="color: <?php if($task1->pt_expense>$task1->pt_total_cost): ?> #c60303 <?php else: ?> <?php endif; ?>"> 
 																			₱<?php $number = $task1->pt_expense; echo number_format ( $number , "2" , "." , "," )?> / 
 																			₱<?php $number = $task1->pt_total_cost; echo number_format ( $number , "2" , "." , "," )?>  
 																			<br> BUDGET 
 																		</span>
 																	</li>
 																	<li style="text-align:center; width:25%">
-																		<span>Deadline: @if($task1->pt_end_date == '1111-11-11') Not yet set
-																			@else{{$task1->pt_end_date}}@endif</span>
+																		<span>Deadline: <?php if($task1->pt_end_date == '1111-11-11'): ?> Not yet set
+																			<?php else: ?><?php echo e($task1->pt_end_date); ?><?php endif; ?></span>
 																		</li>
 																	</ul>
 																</div>
 															</div>
 														</td>
 													</tr>
-													@endforeach
+													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 												</tbody>
 											</table>
 											<!-- end project task list -->
@@ -863,24 +870,24 @@ if it's not present, don't show loader *
 											<p style="margin-bottom:6%;">
 												We have divided the project process into three (3) phases. (You can edit phases here.)
 											</p>
-											@php $phase1 = $phase @endphp
-											@foreach($phase1 as $phase1)
+											<?php  $phase1 = $phase  ?>
+											<?php $__currentLoopData = $phase1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $phase1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 											<div class="widget_summary">
 												<div class="w_left w_25">
-													<a class="editmilestone" data-id="{{$phase1->pp_id}}" style="cursor:pointer"><span>{{$phase1->phase_title}}</span></a>
+													<a class="editmilestone" data-id="<?php echo e($phase1->pp_id); ?>" style="cursor:pointer"><span><?php echo e($phase1->phase_title); ?></span></a>
 												</div>
 												<div class="w_center w_55">
 													<div class="progress">
-														<div class="progress-bar bg-green" role="progressbar" aria-valuenow="{{$phase1->pp_percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{$phase1->pp_percentage}}%;">
+														<div class="progress-bar bg-green" role="progressbar" aria-valuenow="<?php echo e($phase1->pp_percentage); ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo e($phase1->pp_percentage); ?>%;">
 														</div>
 													</div>
 												</div>
 												<div class="w_right w_20">
-													<span>{{$phase1->pp_percentage}}%</span>
+													<span><?php echo e($phase1->pp_percentage); ?>%</span>
 												</div>
 												<div class="clearfix"></div>
 											</div>
-											@endforeach
+											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 										</div>
 									</div>
@@ -922,27 +929,28 @@ if it's not present, don't show loader *
 													</tr>
 												</thead>
 												<tbody>
-													@foreach($equipdep as $equipdep)
+													<?php $__currentLoopData = $equipdep; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $equipdep): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 													<tr>
-														<td>{{$equipdep->ei_id}}</td>
-														<td>{{$equipdep->ec_category}}</td>
-														<td>{{$equipdep->ei_serial_model_plate}}</td>
-														<td>{{$equipdep->ei_capacity_qty}}{{$equipdep->ei_capacity_unit}}</td>
-														<td>{{$equipdep->ed_start_date}}</td>
-														<td>{{$equipdep->ed_total_days}}</td>
+														<td><?php echo e($equipdep->ei_id); ?></td>
+														<td><?php echo e($equipdep->ec_category); ?></td>
+														<td><?php echo e($equipdep->ei_serial_model_plate); ?></td>
+														<td><?php echo e($equipdep->ei_capacity_qty); ?><?php echo e($equipdep->ei_capacity_unit); ?></td>
+														<td><?php echo e($equipdep->ed_start_date); ?></td>
+														<td><?php echo e($equipdep->ed_total_days); ?></td>
 														<td style="text-align:center">
-															<span style="font-weight: bold;color:@if($equipdep->ei_status=='Maintenance') OrangeRed
-																@elseif($equipdep->ei_status=='Deployed') green 
-																@else red @endif" 
-																style="font-size: 1.1em">{{$equipdep->ei_status}}
+															<span style="font-weight: bold;color:<?php if($equipdep->ei_status=='Maintenance'): ?> OrangeRed
+																<?php elseif($equipdep->ei_status=='Deployed'): ?> green 
+																<?php else: ?> red <?php endif; ?>" 
+																style="font-size: 1.1em"><?php echo e($equipdep->ei_status); ?>
+
 															</span>
 														</td>
 													</tr>
-													@endforeach
+													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 												</tbody>
 											</table>
 										</div>
-										@foreach($equipreq as $equipreq)
+										<?php $__currentLoopData = $equipreq; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $equipreq): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 										<div id="request" class="tab-pane fade">
 											<table class="table table-striped">
 												<thead style="background-color: #353959; color:#ffffff;">
@@ -957,29 +965,29 @@ if it's not present, don't show loader *
 													<tr>
 														<td>
 															<!--if(equipreq->req_status == 'Sent')-->
-															<a href="/approveequipreq?id={{$equipreq->req_item_id}}"><button class="btn btn-success btn-sm pull-left  @if($equipreq->req_status == 'Approved') disabled @endif" data-toggle="tooltip" data-placement="left" title="Approve Request" style="text-align:center;"><i class="fa fa-check"></i></button></a>
-															<a @if($equipreq->req_status != 'Rejected') href="/rejectequipreq?id={{$equipreq->req_item_id}}" @endif>
-																<button class="btn btn-danger btn-sm pull-left @if($equipreq->req_status == 'Rejected' || $equipreq->req_status == 'Approved') disabled @endif" data-toggle="tooltip" data-placement="right" title="Reject Request" style="text-align:center;"><i class="fa fa-close"></i>
+															<a href="/approveequipreq?id=<?php echo e($equipreq->req_item_id); ?>"><button class="btn btn-success btn-sm pull-left  <?php if($equipreq->req_status == 'Approved'): ?> disabled <?php endif; ?>" data-toggle="tooltip" data-placement="left" title="Approve Request" style="text-align:center;"><i class="fa fa-check"></i></button></a>
+															<a <?php if($equipreq->req_status != 'Rejected'): ?> href="/rejectequipreq?id=<?php echo e($equipreq->req_item_id); ?>" <?php endif; ?>>
+																<button class="btn btn-danger btn-sm pull-left <?php if($equipreq->req_status == 'Rejected' || $equipreq->req_status == 'Approved'): ?> disabled <?php endif; ?>" data-toggle="tooltip" data-placement="right" title="Reject Request" style="text-align:center;"><i class="fa fa-close"></i>
 																</button>
 															</a>
 															<!--endif-->
 														</td>
-														<td>{{$equipreq->req_items}}</td>
-														<td>{{$equipreq->req_qty}}</td>
+														<td><?php echo e($equipreq->req_items); ?></td>
+														<td><?php echo e($equipreq->req_qty); ?></td>
 														<td>
-															@if($equipreq->req_status == 'Sent')
+															<?php if($equipreq->req_status == 'Sent'): ?>
 															<span style="color: OrangeRed;font-weight: bold;"><!--i class="fa fa-hourglass-end"></i--> Pending</span>
-															@elseif($equipreq->req_status == 'Approved')
-															<span style="color: green;font-weight: bold;"><!--i class="fa fa-check"></i--> {{$equipreq->req_status}}</span>
-															@else
-															<span style="color: red;font-weight: bold;"><!--i class="fa fa-times"></i--> {{$equipreq->req_status}}</span>
-															@endif
+															<?php elseif($equipreq->req_status == 'Approved'): ?>
+															<span style="color: green;font-weight: bold;"><!--i class="fa fa-check"></i--> <?php echo e($equipreq->req_status); ?></span>
+															<?php else: ?>
+															<span style="color: red;font-weight: bold;"><!--i class="fa fa-times"></i--> <?php echo e($equipreq->req_status); ?></span>
+															<?php endif; ?>
 														</td>
 													</tr>
 												</tbody>
 											</table>
 										</div>
-										@endforeach
+										<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 									</div>
 								</div>
 							</div>
@@ -997,11 +1005,11 @@ if it's not present, don't show loader *
 	                       			 </li>
 	                       			 <li style="width: 31%;">
 	                         			 <span class="name"> Remaining budget </span>
-							 			 @if($proj->cb_total - $proj->cb_expense > 0)
+							 			 <?php if($proj->cb_total - $proj->cb_expense > 0): ?>
 	                         			 <span class="value text-success"> P <?php $number = $proj->cb_total - $proj->cb_expense; echo number_format ( $number , "2" , "." , "," )?> </span>
-	                         			 @else
+	                         			 <?php else: ?>
 							 			 <span class="value text-error" style="color: red"> P <?php $number = $proj->cb_total - $proj->cb_expense; echo number_format ( $number , "2" , "." , "," )?> </span>
-	                         			 @endif
+	                         			 <?php endif; ?>
 									</li>
 	                       			 <li style="width: 31%;">
 	                          			<span class="name"> Project Expense </span>
@@ -1031,13 +1039,13 @@ if it's not present, don't show loader *
 														</tr>
 													</thead>
 													<tbody style="font-size: 14px;">
-													@foreach($payment as $payment)
+													<?php $__currentLoopData = $payment; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $payment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 														<tr>
-															<td>{{$payment->payment_refno}}</td>
-															<td>{{$payment->payment_date}}</td>
+															<td><?php echo e($payment->payment_refno); ?></td>
+															<td><?php echo e($payment->payment_date); ?></td>
 															<td>₱  <?php $number = $payment->payment_amount; echo number_format ( $number , "2" , "." , "," )?></td>
 														</tr>
-													@endforeach
+													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 													</tbody>
 												</table>
 											</form>
@@ -1065,17 +1073,17 @@ if it's not present, don't show loader *
 														</tr>
 													</thead>
 													<tbody style="font-size: 14px;">
-													@php $invoice1 = $invoice @endphp
-												    @foreach($invoice1 as $invoice1)
+													<?php  $invoice1 = $invoice  ?>
+												    <?php $__currentLoopData = $invoice1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $invoice1): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 														<tr>
-															<input type="hidden" id="invoice_status" class="form-control" value="{{$invoice1->invoice_status}}">
+															<input type="hidden" id="invoice_status" class="form-control" value="<?php echo e($invoice1->invoice_status); ?>">
 															<td>
-																<a data-id="{{$invoice1->invoice_no}}" class="editinvoice" style="cursor:pointer;">{{$invoice1->invoice_no}}</a>
+																<a data-id="<?php echo e($invoice1->invoice_no); ?>" class="editinvoice" style="cursor:pointer;"><?php echo e($invoice1->invoice_no); ?></a>
 															</td>
-															<td>{{$invoice1->invoice_due}}</td>
+															<td><?php echo e($invoice1->invoice_due); ?></td>
 															<td>₱ <?php $number = $invoice1->invoice_amount; echo number_format ( $number , "2" , "." , "," )?></td>
 														</tr>
-													@endforeach
+													<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 													</tbody>
 												</table>
 											</form>
@@ -1120,19 +1128,19 @@ if it's not present, don't show loader *
 														</tr>
 													</thead>
 													<tbody style="font-size: 14px;">
-														@php $plan2 = $plan @endphp
-														@foreach($plan2 as $plan2)
+														<?php  $plan2 = $plan  ?>
+														<?php $__currentLoopData = $plan2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $plan2): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 														<tr>
-															<td>{{$plan2->task_description}}</td>
+															<td><?php echo e($plan2->task_description); ?></td>
 															<td>₱ <?php $number = $plan2->task_unit_cost; echo number_format ( $number , "2" , "." , "," )?>
-																/ {{$plan2->task_unit}}</td>
-																<td>{{$plan2->pt_qty}}</td>
+																/ <?php echo e($plan2->task_unit); ?></td>
+																<td><?php echo e($plan2->pt_qty); ?></td>
 																<td>
 																	<span><strong>
 																		₱ <?php $number = $plan2->pt_total_cost; echo number_format ( $number , "2" , "." , "," )?>
 																	</strong></span>
 																</td>
-																@endforeach
+																<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 																<tr>
 																	<td colspan="3" align="right" style="text-align: left;" class="quote-align-left" style="font-size: 18px;">Total Cost:</td>
 																	<td class="subtotal">
@@ -1236,7 +1244,8 @@ if it's not present, don't show loader *
 						</div>
 						<div class="modal-body">
 							<form method="post" action="/editAdminClientCompany">
-								{{csrf_field()}}
+								<?php echo e(csrf_field()); ?>
+
 								<input type="hidden" id="id" name="id">
 								<h2 class="StepTitle" style="text-align:center; margin-bottom: 15px;">Client Information</h2>
 								<div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
@@ -1320,7 +1329,8 @@ if it's not present, don't show loader *
 						</div>
 						<div class="modal-body">
 							<form method="post" action="/invoice">
-								{{csrf_field()}}
+								<?php echo e(csrf_field()); ?>
+
 								<input type="hidden" id="proj_no" name="proj_no">
 
 								<div class="col-md-8 col-sm-8 col-xs-16 form-group has-feedback" style="margin-top:2%;" id="divprojname">
@@ -1375,7 +1385,8 @@ if it's not present, don't show loader *
 						</div>
 						<div class="modal-body" >
 							<form method="post" action="/editprojinvoice">
-								{{csrf_field()}}
+								<?php echo e(csrf_field()); ?>
+
 								
 								<div class="col-md-6 col-sm-6 col-xs-24" style="margin-top:1.5%">
 

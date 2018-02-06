@@ -948,6 +948,17 @@ class AdminController extends Controller
       'proj_complete_date' => date_create('now'),
       'ci_no' => $ci_no,
     ], 'proj_no');//DB
+	DB::table('invoice_tbl')->insert([
+			'invoice_no' => "0",
+			'proj_no' => $proj_no,
+			'proj_percentage' => 15,
+			'proj_accpercentage' => 15,
+			'invoice_date' => date_create('now'),
+  			'invoice_due' => date_create('now'),
+  			'invoice_amount' => $_POST['contract-paid'],
+			'invoice_status' => "Paid",
+			'invoice_delete' => 1,
+		]);
     DB::table('proj_percentage_history_tbl')->insert([
 	   'proj_no' => $proj_no,
 		'pph_percentage_added' => 0,
@@ -1310,16 +1321,18 @@ public function ProjectEdit(){
 			->join('project_phase_tbl as pp','pt.pp_id','=','pp.pp_id')
 			->join('project_info_tbl as pi','pi.proj_no','=','pr.proj_no')
 			->where('pr.proj_no',$_GET['id'])
-			->orderBy('pp.pp_id')
+			->orderBy('task_tbl.phase_id')
 			->orderBy('task_tbl.task_item_no')->get();
 		$phase = DB::table('project_phase_tbl as pp')
 			->join('phase_tbl','pp.phase_id','=','phase_tbl.phase_id')
-			->where('pp.proj_no',$_GET['id'])->get();
+			->where('pp.proj_no',$_GET['id'])
+			->orderBy('phase_tbl.phase_title')->get();
 		$invoice = DB::table('project_tbl as pr')
 			->join('project_info_tbl as pi','pi.proj_no','=','pr.proj_no')
 			->join('invoice_tbl as in','in.proj_no','=','pr.proj_no')
 			->where('in.proj_no',$_GET['id'])
-			->where('in.invoice_no','<>','0')->get();
+			->where('in.invoice_no','<>','0')
+			->where('in.invoice_delete','0')->get();
 		$payment= DB::table('project_tbl as pr')
 			->join('project_info_tbl as pi','pi.proj_no','=','pr.proj_no')
 			->join('payment_tbl as pay','pay.proj_no','=','pr.proj_no')
@@ -1478,12 +1491,12 @@ public function ProjectEdit(){
     //get project info for invoice
 	public function addinvoice(Request $req){
 			
-			$qry = 'SELECT * FROM `project_tbl`  as proj
-						JOIN `project_info_tbl`  as pi ON pi.proj_no = proj.proj_no
-						JOIN `invoice_tbl`  as in ON proj.proj_no = in.proj_no
-						WHERE pr.proj_no ='.$proj_no.' ORDER BY in.invoice_id DESC LIMIT 1 ';			
 			
-			$type = DB::select($qry);
+			$type = DB::table('project_tbl as pr')
+			->join('project_info_tbl as pi','pr.proj_no','=','pi.proj_no')
+			->join('invoice_tbl as in','in.proj_no','=','pr.proj_no')
+			->where('pr.proj_no',$req->id)->get();
+			
         return response()->json($type);
     }
 	
@@ -1571,13 +1584,13 @@ public function ProjectEdit(){
 		$invoicedue = $_POST['invoice_due'];
 		$projper = $_POST['proj_percentage'];
 	  
-		$inper = DB::table('invoice_tbl as in')
-			->where('in.proj_no',$id)
-			->where('in.invoice_no','0')->get();
+		$qry = 'SELECT * FROM `invoice_tbl`  WHERE proj_no ='.$id.' ORDER BY invoice_id DESC LIMIT 1 ';			
+			
+			$inper = DB::select($qry);
 		
-    	foreach ($inper as $inper) {
-    		$invoiceper = $inper->proj_percentage;
-    	}
+    		foreach ($inper as $inper) {
+    			$invoiceper = $inper->proj_percentage;
+    		}
 			
 		$accper	= $projper - $invoiceper;
 		
@@ -1708,7 +1721,7 @@ public function ProjectEdit(){
 		foreach($invoice as $invoice) {
 			$invoice_amount = $invoice->invoice_amount;
 		}
-		if($payment_status=="Paid" && $recentinstat=="Waiting"){
+		if($payment_status=="Paid" && $recentinstat=="Unpaid"){
 			$newpaid = $paid + $invoice_amount;
 			$newbalance = $balance - $invoice_amount;
 			DB::table('project_tbl as pr')
@@ -1725,7 +1738,7 @@ public function ProjectEdit(){
                       'invoice_id' => $_POST['invoice_no'],
                       'payment_date' => date_create('now'),
               ]);
-		} else if($payment_status=="Waiting" && $recentinstat=="Paid"){
+		} else if($payment_status=="Unpaid" && $recentinstat=="Paid"){
 			$newpaid = $paid - $invoice_amount;
 			$newbalance = $balance + $invoice_amount;
 			DB::table('project_tbl as pr')
@@ -1736,9 +1749,9 @@ public function ProjectEdit(){
 					'cb_balance' => $newbalance,
 				]);
             DB::table('payment_tbl')->where('invoice_id', $_POST['invoice_no'])->delete();
-		} else if ($payment_status=="Waiting" && $recentinstat=="Waiting"){
+		} else if ($payment_status=="Unpaid" && $recentinstat=="Unpaid"){
 			
-		} else if ($payment_status=="Waiting" && $recentinstat=="Waiting"){
+		} else if ($payment_status=="Unpaid" && $recentinstat=="Unpaid"){
 			
 		} else {}
         
